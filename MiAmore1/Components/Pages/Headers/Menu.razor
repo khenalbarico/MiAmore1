@@ -1,0 +1,22 @@
+﻿@inject CoreTabState TabState
+@rendermode InteractiveServer
+
+<nav class="menu">
+    <button class="menu-item" @onclick="() => Select(TabType.Play)">Play</button>
+    <span class="divider">|</span>
+
+    <button class="menu-item" @onclick="() => Select(TabType.Gallery)">Gallery</button>
+    <span class="divider">|</span>
+
+    <button class="menu-item" @onclick="() => Select(TabType.Flower)">Flower</button>
+    <span class="divider">|</span>
+
+    <button class="menu-item" @onclick="() => Select(TabType.Music)">Music</button>
+</nav>
+
+@code {
+    private void Select(TabType tab)
+    {
+        TabState.SetTab(tab);
+    }
+}

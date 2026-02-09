@@ -1,0 +1,32 @@
+﻿@inject CoreTabState TabState
+@rendermode InteractiveServer
+@implements IDisposable
+
+<div class="core-content">
+    @switch (TabState.ActiveTab)
+    {
+        case TabType.Play:
+            <PlayTab />
+            break;
+
+        case TabType.Gallery:
+            <Gallery />
+            break;
+
+        case TabType.Flower:
+            <Flower />
+            break;
+
+        case TabType.Music:
+            <Music />
+            break;
+    }
+</div>
+
+@code {
+    protected override void OnInitialized()
+    => TabState.OnChange += StateHasChanged;
+     
+    public void Dispose()
+    => TabState.OnChange -= StateHasChanged;  
+}

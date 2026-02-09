@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "WbeifiAMKy8=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Khen\\source\\repos\\MiAmore\\LogicLbrary1\\LogicLbrary1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Khen\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.2\\microsoft.extensions.dependencyinjection.abstractions.10.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,47 @@
+﻿.menu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-end;
+    animation: menuIn 520ms ease-out;
+}
+
+@keyframes menuIn {
+    from {
+        transform: translateX(10px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.menu-item {
+    background: rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 600;
+    color: hotpink;
+
+    cursor: pointer;
+    padding: 6px 12px;
+    transition: transform 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
+}
+
+    .menu-item:hover {
+        transform: translateY(-1px) scale(1.03);
+        background: rgba(255, 255, 255, 0.38);
+        box-shadow: 0 8px 16px rgba(43, 15, 28, 0.12);
+    }
+
+    .menu-item:active {
+        transform: translateY(0) scale(0.98);
+    }
+
+.divider {
+    color: hotpink; 
+    font-weight: 700;
+}

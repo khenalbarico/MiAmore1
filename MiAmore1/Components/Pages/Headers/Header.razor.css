@@ -1,0 +1,27 @@
+﻿.app-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    height: 64px;
+    padding: 0 24px;
+    background: linear-gradient(90deg, #ff5fa2 0%, #ff7ac8 50%, #ff9ad5 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 8px 18px rgba(255, 95, 162, 0.25);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    animation: headerIn 420ms ease-out;
+}
+
+@keyframes headerIn {
+    from {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

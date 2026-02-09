@@ -1,0 +1,138 @@
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\EmbeddedAttribute.cs
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\ValidatableTypeAttribute.cs
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\MiAmore1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\MiAmore1.AssemblyInfoInputs.cache
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\MiAmore1.AssemblyInfo.cs
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\MiAmore1.csproj.CoreCompileInputs.cache
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\MiAmore1.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\appsettings.Development.json
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\appsettings.json
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\MiAmore1.staticwebassets.runtime.json
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\MiAmore1.staticwebassets.endpoints.json
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\MiAmore1.exe
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\MiAmore1.deps.json
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\MiAmore1.runtimeconfig.json
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\MiAmore1.dll
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\MiAmore1.pdb
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\rjimswa.dswa.cache.json
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\scopedcss\Components\Layout\MainLayout.razor.rz.scp.css
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\scopedcss\Components\Layout\ReconnectModal.razor.rz.scp.css
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\scopedcss\Components\Pages\Headers\Title.razor.rz.scp.css
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\scopedcss\bundle\MiAmore1.styles.css
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\scopedcss\projectbundle\MiAmore1.bundle.scp.css
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\u4wgnbtjcx-{0}-khy4lop6wu-khy4lop6wu.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\5fav2biuz0-{0}-bqjiyaj88i-bqjiyaj88i.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\2jbjeyacdv-{0}-c2jlpeoesf-c2jlpeoesf.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\6e9vz93urk-{0}-erw9l3u2r3-erw9l3u2r3.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\fx20to34kv-{0}-aexeepp0ev-aexeepp0ev.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\t73kjwttbo-{0}-d7shbmvgxk-d7shbmvgxk.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\vhpk9au7md-{0}-ausgxo2sd3-ausgxo2sd3.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\x7bgv2pc1p-{0}-k8d9w2qqmf-k8d9w2qqmf.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\15t6ol77sd-{0}-cosvhxvwiu-cosvhxvwiu.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\6z3gij76ox-{0}-ub07r2b239-ub07r2b239.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\hqjvu1dvlj-{0}-fvhpjtyr6v-fvhpjtyr6v.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\4s9ubvfkuk-{0}-b7pk76d08c-b7pk76d08c.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\6qudfy45r8-{0}-fsbi9cje9m-fsbi9cje9m.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\ieig1t4qse-{0}-rzd6atqjts-rzd6atqjts.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\qf5k7129gn-{0}-ee0r1s7dh0-ee0r1s7dh0.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\dptc5ltyoa-{0}-dxx9fxp4il-dxx9fxp4il.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\dga2qdb4pz-{0}-jd9uben2k1-jd9uben2k1.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\nu3sb9lbut-{0}-khv3u5hwcm-khv3u5hwcm.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\tz5wtpgihw-{0}-r4e9w2rdcm-r4e9w2rdcm.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\s6qe7c2okd-{0}-lcd1t2u6c8-lcd1t2u6c8.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\xiop74cowv-{0}-c2oey78nd0-c2oey78nd0.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\6gtbwzlbn1-{0}-tdbxkamptv-tdbxkamptv.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\16dooh758d-{0}-j5mq2jizvt-j5mq2jizvt.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\l7g3ji0uy3-{0}-06098lyss8-06098lyss8.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\5elyeytuqe-{0}-nvvlpmu67g-nvvlpmu67g.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\sf9vidi89u-{0}-s35ty4nyc5-s35ty4nyc5.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\nmwbwav5s8-{0}-pj5nd1wqec-pj5nd1wqec.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\o0uvm5psyz-{0}-46ein0sx1k-46ein0sx1k.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\nj8szf1scy-{0}-v0zj4ognzu-v0zj4ognzu.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\vv4hx05aln-{0}-37tfw0ft22-37tfw0ft22.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\nhx3hdxeu9-{0}-hrwsygsryq-hrwsygsryq.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\soekd2wavg-{0}-pk9g2wxc8p-pk9g2wxc8p.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\t2slpec30y-{0}-ft3s53vfgj-ft3s53vfgj.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\z96x9odzmo-{0}-6cfz1n2cew-6cfz1n2cew.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\r3oe1a37mh-{0}-6pdc2jztkx-6pdc2jztkx.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\tk9vc361uu-{0}-493y06b0oq-493y06b0oq.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\9qbphx69ku-{0}-iovd86k7lj-iovd86k7lj.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\hpf3m9g49o-{0}-vr1egmr9el-vr1egmr9el.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\8ogue7zp4n-{0}-kbrnm935zg-kbrnm935zg.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\umkn2wp0s7-{0}-jj8uyg4cgr-jj8uyg4cgr.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\ycxichfk09-{0}-y7v9cxd14o-y7v9cxd14o.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\imv8wl8vvt-{0}-notf2xhcfb-notf2xhcfb.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\q567xgxbtr-{0}-h1s4sie4z3-h1s4sie4z3.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\8fb8xgo759-{0}-63fj8s7r0e-63fj8s7r0e.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\zx5x7czcz6-{0}-0j3bgjxly4-0j3bgjxly4.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\twddzrmil3-{0}-abdmv1u4y3-abdmv1u4y3.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\an70i0hhbo-{0}-2i0r6wwb69-2i0r6wwb69.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\8ca3aef4le-{0}-iz83ucvm53-iz83ucvm53.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\staticwebassets.build.json
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\staticwebassets.build.json.cache
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\staticwebassets.development.json
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\swae.build.ex.cache
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\MiAmore1.dll
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\refint\MiAmore1.dll
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\MiAmore1.pdb
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\MiAmore1.genruntimeconfig.cache
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\ref\MiAmore1.dll
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\scopedcss\Components\Pages\Headers\Header.razor.rz.scp.css
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\scopedcss\Components\Pages\Headers\Menu.razor.rz.scp.css
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\LogicLbrary1.dll
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\LogicLbrary1.pdb
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\MiAmore1.csproj.AssemblyReference.cache
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\MiAmore1.csproj.Up2Date
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\play\1.png
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\play\2.png
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\play\3.png
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\play\4.png
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\scopedcss\Components\Pages\Tabs\PlayTab.razor.rz.scp.css
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\December 2025\3b4fca08-814e-49d4-9ac9-f54ece08a707.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\February 2025\12e6cbba-4c6b-4aef-a626-4e5b28f30ecd.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\February 2025\2c5acc61-0bc2-4e6a-b894-4ddf44859bbf.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\February 2025\46a2818e-1b8d-4133-905b-b3d95c2d5233.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\February 2025\64434dad-6ab6-4811-beba-b5a1e63a5f34.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\February 2025\660897ce-4b13-4b93-86e2-583b3010be5b.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\January 2026\014b47ce-f6de-4318-8482-87e8c73c4ca6.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\January 2026\174e112f-0679-4c8a-95a0-658a6c2b9f9e.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\January 2026\57ef33c3-d63c-4c8d-99e0-60718eb2eca8.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\January 2026\cbf499c4-7c17-4d31-9901-d8ab3aeb6196.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\July 2025\35d138ac-f8af-46fc-a1c6-f66ac473f864.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\July 2025\4f2576a6-8066-4ca3-9328-86428d808e78.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\June 2025\622b818d-2bb9-44a4-90d0-a7ec0345d013.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\June 2025\63927d55-b8fa-4a4f-ae6a-5e558859c6f9.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\March 2025\222e9434-3b61-493d-8df9-91fc23cfdefe.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\March 2025\45ec904f-1a17-4404-bf0b-190c7898df5f.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\March 2025\62368a10-cebd-474c-83ac-bd746e63db18.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\March 2025\6f5eac76-5313-4a45-bc4b-1f17cc9eb192.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\March 2025\91833723-2776-478b-bea4-11d01b8cdb67.mp4
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\May 2025\9f4e2715-0806-4bbe-a9d8-e2c5e7cb2238.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\May 2025\dabb219d-3450-41d9-b920-57cec8dc88dc.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\November 2025\1ea0b601-6f76-4f63-bc2d-35578789ea21.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\November 2025\37fbc3ce-1b47-465b-ba4d-a95f48e227a5.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\November 2025\94c9f7eb-7096-4af7-ac28-8d67b0e53a30.mp4
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\November 2025\c816d30c-f307-4f69-bf27-9479d7251861.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\November 2025\e5e3e484-153f-4c0c-9660-b99c6f037395.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\October 2025\1576711e-d7d4-469d-8cb3-d95d87ec2964.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\October 2025\4ea4ac88-8937-41ee-ac8d-793f853a0561.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\September 2025\363c39f7-c26f-4fb4-8c79-4d8520fb360a.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\September 2025\5b2edc81-6a01-4957-a95a-ee12b5b3bf2e.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\September 2025\772a0214-91a5-4aa7-993b-5f736c12efb6.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\September 2025\b3aa5cb2-64c1-4bd9-8820-a6bfbd3638ba.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\scopedcss\Components\Pages\Tabs\Gallery.razor.rz.scp.css
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\April 2025\1.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\April 2025\2.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\April 2025\3.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\April 2025\4.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\August 2025\1.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\August 2025\2.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\August 2025\3.jpg
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\bin\Debug\net10.0\wwwroot\images\monthHighlights\August 2025\4.mp4
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\ma55tpk495-{0}-dx615cixfm-dx615cixfm.gz
+C:\Users\Khen\source\repos\MiAmore1\MiAmore1\obj\Debug\net10.0\compressed\ts37cez53g-{0}-dx615cixfm-dx615cixfm.gz

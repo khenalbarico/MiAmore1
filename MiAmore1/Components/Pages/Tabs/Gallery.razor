@@ -1,0 +1,141 @@
+﻿@using System.IO
+@inject IWebHostEnvironment Env
+
+<div class="g-wrap">
+    <div class="g-body">
+        <h2 class="g-title">Monthly Highlights</h2>
+
+        <div class="months">
+            @foreach (var m in _months)
+            {
+                <button class="month-tile" @onclick="() => Open(m)">
+                    @{
+                        var p = m.Items.Take(4).ToList();
+                        var extra = m.Items.Count - p.Count;
+                        var cls = $"collage c{Math.Min(4, p.Count)}";
+                    }
+
+                    <div class="pink-card">
+                        <div class="thumb">
+                            <div class="@cls">
+                                @for (var i = 0; i < p.Count; i++)
+                                {
+                                    var it = p[i];
+                                    <div class="cell">
+                                        @if (it.IsVideo)
+                                        {
+                                            <video class="media" muted loop playsinline preload="metadata">
+                                                <source src="@it.WebPath" type="video/mp4" />
+                                            </video>
+                                            <span class="play">▶</span>
+                                        }
+                                        else
+                                        {
+                                            <img class="media" src="@it.WebPath" loading="lazy" />
+                                        }
+
+                                        @if (i == p.Count - 1 && extra > 0)
+                                        {
+                                            <div class="more">+@extra</div>
+                                        }
+                                    </div>
+                                }
+                            </div>
+
+                            <div class="thumb-overlay">
+                                <div class="thumb-title">@m.Name</div>
+                                <div class="thumb-sub">@m.Items.Count item(s)</div>
+                            </div>
+                        </div>
+                    </div>
+                </button>
+            }
+        </div>
+    </div>
+</div>
+
+@if (_open && _active is not null)
+{
+    <div class="backdrop" @onclick="Close">
+        <div class="modal" @onclick:stopPropagation="true">
+            <header>
+                <b>@_active.Name</b>
+                <button class="x" @onclick="Close">✕</button>
+            </header>
+
+            <main>
+                <div class="items">
+                    @foreach (var it in _active.Items)
+                    {
+                        <div class="tile">
+                            @if (it.IsVideo)
+                            {
+                                <video class="item" controls preload="metadata">
+                                    <source src="@it.WebPath" type="video/mp4" />
+                                </video>
+                            }
+                            else
+                            {
+                                <img class="item" src="@it.WebPath" loading="lazy" />
+                            }
+                        </div>
+                    }
+                </div>
+            </main>
+        </div>
+    </div>
+}
+
+@code {
+    private List<MonthGallery> _months = new();
+    private bool _open;
+    private MonthGallery? _active;
+
+    protected override void OnInitialized()
+    {
+        var root = Path.Combine(Env.WebRootPath, "images", "monthHighlights");
+        if (!Directory.Exists(root)) return;
+
+        _months = Directory.GetDirectories(root)
+            .Select(dir =>
+            {
+                var name = Path.GetFileName(dir);
+                var items = Directory.GetFiles(dir)
+                    .Where(f => new[] { ".jpg", ".jpeg", ".mp4" }
+                        .Contains(Path.GetExtension(f).ToLowerInvariant()))
+                    .OrderBy(f => f, StringComparer.OrdinalIgnoreCase)
+                    .Select(f => new MediaItem(
+                        $"/images/monthHighlights/{name}/{Path.GetFileName(f)}",
+                        Path.GetExtension(f).Equals(".mp4", StringComparison.OrdinalIgnoreCase)))
+                    .ToList();
+
+                return new MonthGallery(name, items);
+            })
+            .Where(m => m.Items.Count > 0)
+            .OrderBy(m => MonthKey(m.Name))
+            .ToList();
+    }
+
+    private static int MonthKey(string n) => n.ToLower() switch
+    {
+        "january" => 1,
+        "february" => 2,
+        "march" => 3,
+        "april" => 4,
+        "may" => 5,
+        "june" => 6,
+        "july" => 7,
+        "august" => 8,
+        "september" => 9,
+        "october" => 10,
+        "november" => 11,
+        "december" => 12,
+        _ => 99
+    };
+
+    void Open(MonthGallery m) { _active = m; _open = true; }
+    void Close() { _open = false; _active = null; }
+
+    record MonthGallery(string Name, List<MediaItem> Items);
+    record MediaItem(string WebPath, bool IsVideo);
+}
