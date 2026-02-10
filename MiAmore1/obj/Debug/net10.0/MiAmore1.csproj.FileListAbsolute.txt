@@ -276,5 +276,5 @@ C:\Users\Khen\source\repos\MiAmore\MiAmore1\obj\Debug\net10.0\ref\MiAmore1.dll
 C:\Users\Khen\source\repos\MiAmore\MiAmore1\bin\Debug\net10.0\DataSimulation1.dll
 C:\Users\Khen\source\repos\MiAmore\MiAmore1\bin\Debug\net10.0\DataSimulation1.pdb
 C:\Users\Khen\source\repos\MiAmore\MiAmore1\bin\Debug\net10.0\GetGalleryMessages.json
-C:\Users\Khen\source\repos\MiAmore\MiAmore1\obj\Debug\net10.0\compressed\ma55tpk495-{0}-ecekosv0xx-ecekosv0xx.gz
-C:\Users\Khen\source\repos\MiAmore\MiAmore1\obj\Debug\net10.0\compressed\ts37cez53g-{0}-ecekosv0xx-ecekosv0xx.gz
+C:\Users\Khen\source\repos\MiAmore\MiAmore1\obj\Debug\net10.0\compressed\ma55tpk495-{0}-5copvct6i7-5copvct6i7.gz
+C:\Users\Khen\source\repos\MiAmore\MiAmore1\obj\Debug\net10.0\compressed\ts37cez53g-{0}-5copvct6i7-5copvct6i7.gz

@@ -9,9 +9,10 @@
         <h2 class="g-title">Monthly Highlights</h2>
 
         <div class="months">
-            @foreach (var m in _months)
+            @for (int i = 0; i < _months.Count; i++)
             {
-                <div class="month-tile" @onclick="() => Open(m)">
+                var m = _months[i];
+                <div class="month-tile" style="--d:@(i * 55)ms" @onclick="() => Open(m)">
                     @{
                         var p = m.Items.Take(4).ToList();
                         var cls = $"collage c{Math.Min(4, p.Count)}";
@@ -57,9 +58,10 @@
 
             <div class="g-modal-content @(_active.Items.Count == 1 ? "single" : "multi")">
                 <div class="media-grid">
-                    @foreach (var it in _active.Items)
+                    @for (int i = 0; i < _active.Items.Count; i++)
                     {
-                        <div class="media-box">
+                        var it = _active.Items[i];
+                        <div class="media-box" style="--md:@(i * 45)ms">
                             @if (it.IsVideo)
                             {
                                 <video src="@it.WebPath" controls></video>
