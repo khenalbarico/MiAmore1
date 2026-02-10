@@ -12,9 +12,22 @@
           "buildMultiTargeting/Microsoft.AspNetCore.App.Internal.Assets.targets": {}
         }
       },
+      "DataSimulation1/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/DataSimulation1.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DataSimulation1.dll": {}
+        }
+      },
       "LogicLbrary1/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "DataSimulation1": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/LogicLbrary1.dll": {}
         },
@@ -47,6 +60,11 @@
         "microsoft.aspnetcore.app.internal.assets.10.0.2.nupkg.sha512",
         "microsoft.aspnetcore.app.internal.assets.nuspec"
       ]
+    },
+    "DataSimulation1/1.0.0": {
+      "type": "project",
+      "path": "../DataSimulation1/DataSimulation1.csproj",
+      "msbuildProject": "../DataSimulation1/DataSimulation1.csproj"
     },
     "LogicLbrary1/1.0.0": {
       "type": "project",

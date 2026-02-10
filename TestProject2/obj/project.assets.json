@@ -410,10 +410,21 @@
           "build/net8.0/xunit.runner.visualstudio.props": {}
         }
       },
+      "DataSimulation1/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/DataSimulation1.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DataSimulation1.dll": {}
+        }
+      },
       "LogicLbrary1/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
         "dependencies": {
+          "DataSimulation1": "1.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.2"
         },
         "compile": {
@@ -963,6 +974,11 @@
         "xunit.runner.visualstudio.3.1.4.nupkg.sha512",
         "xunit.runner.visualstudio.nuspec"
       ]
+    },
+    "DataSimulation1/1.0.0": {
+      "type": "project",
+      "path": "../DataSimulation1/DataSimulation1.csproj",
+      "msbuildProject": "../DataSimulation1/DataSimulation1.csproj"
     },
     "LogicLbrary1/1.0.0": {
       "type": "project",

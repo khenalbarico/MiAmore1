@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="DataSimulation1/DataSimulation1.csproj" Id="a94ca74d-dcb2-4491-af69-6b021a680f58" />
   <Project Path="LogicLbrary1/LogicLbrary1.csproj" />
   <Project Path="MiAmore1/MiAmore1.csproj" />
   <Project Path="TestProject2/TestProject2.csproj" />

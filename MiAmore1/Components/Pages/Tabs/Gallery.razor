@@ -1,4 +1,7 @@
 ﻿@using System.IO
+@using System.Text.Json
+@using System.Globalization
+@using LogicLbrary1.Models.Gallery
 @inject IWebHostEnvironment Env
 
 <div class="g-wrap">
@@ -8,35 +11,27 @@
         <div class="months">
             @foreach (var m in _months)
             {
-                <button class="month-tile" @onclick="() => Open(m)">
+                <div class="month-tile" @onclick="() => Open(m)">
                     @{
                         var p = m.Items.Take(4).ToList();
-                        var extra = m.Items.Count - p.Count;
                         var cls = $"collage c{Math.Min(4, p.Count)}";
                     }
 
                     <div class="pink-card">
                         <div class="thumb">
                             <div class="@cls">
-                                @for (var i = 0; i < p.Count; i++)
+                                @foreach (var it in p)
                                 {
-                                    var it = p[i];
                                     <div class="cell">
                                         @if (it.IsVideo)
                                         {
-                                            <video class="media" muted loop playsinline preload="metadata">
+                                            <video class="media" muted loop playsinline>
                                                 <source src="@it.WebPath" type="video/mp4" />
                                             </video>
-                                            <span class="play">▶</span>
                                         }
                                         else
                                         {
-                                            <img class="media" src="@it.WebPath" loading="lazy" />
-                                        }
-
-                                        @if (i == p.Count - 1 && extra > 0)
-                                        {
-                                            <div class="more">+@extra</div>
+                                            <img class="media" src="@it.WebPath" />
                                         }
                                     </div>
                                 }
@@ -48,7 +43,7 @@
                             </div>
                         </div>
                     </div>
-                </button>
+                </div>
             }
         </div>
     </div>
@@ -56,42 +51,67 @@
 
 @if (_open && _active is not null)
 {
-    <div class="backdrop" @onclick="Close">
-        <div class="modal" @onclick:stopPropagation="true">
-            <header>
-                <b>@_active.Name</b>
-                <button class="x" @onclick="Close">✕</button>
-            </header>
+    <div class="g-backdrop" @onclick="Close">
+        <div class="g-modal romantic" @onclick:stopPropagation="true">
+            <button class="g-close-btn" @onclick="Close">✕</button>
 
-            <main>
-                <div class="items">
+            <div class="g-modal-content @(_active.Items.Count == 1 ? "single" : "multi")">
+                <div class="media-grid">
                     @foreach (var it in _active.Items)
                     {
-                        <div class="tile">
+                        <div class="media-box">
                             @if (it.IsVideo)
                             {
-                                <video class="item" controls preload="metadata">
-                                    <source src="@it.WebPath" type="video/mp4" />
-                                </video>
+                                <video src="@it.WebPath" controls></video>
                             }
                             else
                             {
-                                <img class="item" src="@it.WebPath" loading="lazy" />
+                                <img src="@it.WebPath" />
                             }
                         </div>
                     }
                 </div>
-            </main>
+
+                <div class="message-box">
+                    <h3>@_active.Name</h3>
+                    <p>@_active.Model.Message</p>
+                </div>
+            </div>
         </div>
     </div>
 }
 
 @code {
     private List<MonthGallery> _months = new();
-    private bool _open;
     private MonthGallery? _active;
+    private bool _open;
+    private Dictionary<(int Year, int Month), string> _messages = new();
 
     protected override void OnInitialized()
+    {
+        LoadMessages();
+        LoadGallery();
+    }
+
+    void LoadMessages()
+    {
+        var path = Path.Combine(AppContext.BaseDirectory, "GetGalleryMessages.json");
+        if (!File.Exists(path)) return;
+
+        var json = File.ReadAllText(path);
+        var data = JsonSerializer.Deserialize<List<GalleryMessageYear>>(json)!;
+
+        foreach (var y in data)
+        {
+            foreach (var m in y.Months)
+            {
+                var month = DateTime.ParseExact(m.Key, "MMMM", CultureInfo.InvariantCulture).Month;
+                _messages[(int.Parse(y.Year), month)] = m.Value;
+            }
+        }
+    }
+
+    void LoadGallery()
     {
         var root = Path.Combine(Env.WebRootPath, "images", "monthHighlights");
         if (!Directory.Exists(root)) return;
@@ -100,42 +120,44 @@
             .Select(dir =>
             {
                 var name = Path.GetFileName(dir);
+                if (!DateTime.TryParseExact(name, "MMMM yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out var date))
+                    return null;
+
                 var items = Directory.GetFiles(dir)
-                    .Where(f => new[] { ".jpg", ".jpeg", ".mp4" }
-                        .Contains(Path.GetExtension(f).ToLowerInvariant()))
-                    .OrderBy(f => f, StringComparer.OrdinalIgnoreCase)
+                    .Where(f => new[] { ".jpg", ".jpeg", ".mp4" }.Contains(Path.GetExtension(f).ToLower()))
                     .Select(f => new MediaItem(
                         $"/images/monthHighlights/{name}/{Path.GetFileName(f)}",
                         Path.GetExtension(f).Equals(".mp4", StringComparison.OrdinalIgnoreCase)))
                     .ToList();
 
-                return new MonthGallery(name, items);
+                if (!items.Any()) return null;
+
+                _messages.TryGetValue((date.Year, date.Month), out var msg);
+
+                return new MonthGallery(
+                    date.ToString("MMMM yyyy"),
+                    date,
+                    items,
+                    new BaseModelGallery { Message = msg ?? "" });
             })
-            .Where(m => m.Items.Count > 0)
-            .OrderBy(m => MonthKey(m.Name))
-            .ToList();
+            .Where(x => x != null)
+            .OrderByDescending(x => x!.Date)
+            .ToList()!;
     }
 
-    private static int MonthKey(string n) => n.ToLower() switch
+    void Open(MonthGallery m)
     {
-        "january" => 1,
-        "february" => 2,
-        "march" => 3,
-        "april" => 4,
-        "may" => 5,
-        "june" => 6,
-        "july" => 7,
-        "august" => 8,
-        "september" => 9,
-        "october" => 10,
-        "november" => 11,
-        "december" => 12,
-        _ => 99
-    };
+        _active = m;
+        _open = true;
+    }
 
-    void Open(MonthGallery m) { _active = m; _open = true; }
-    void Close() { _open = false; _active = null; }
+    void Close()
+    {
+        _open = false;
+        _active = null;
+    }
 
-    record MonthGallery(string Name, List<MediaItem> Items);
+    record GalleryMessageYear(string Year, Dictionary<string, string> Months);
+    record MonthGallery(string Name, DateTime Date, List<MediaItem> Items, BaseModelGallery Model);
     record MediaItem(string WebPath, bool IsVideo);
 }

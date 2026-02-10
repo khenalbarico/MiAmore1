@@ -17,6 +17,16 @@
         "build": {
           "buildTransitive/net8.0/_._": {}
         }
+      },
+      "DataSimulation1/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/DataSimulation1.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DataSimulation1.dll": {}
+        }
       }
     }
   },
@@ -51,10 +61,16 @@
         "microsoft.extensions.dependencyinjection.abstractions.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "DataSimulation1/1.0.0": {
+      "type": "project",
+      "path": "../DataSimulation1/DataSimulation1.csproj",
+      "msbuildProject": "../DataSimulation1/DataSimulation1.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net10.0": [
+      "DataSimulation1 >= 1.0.0",
       "Microsoft.Extensions.DependencyInjection.Abstractions >= 10.0.2"
     ]
   },
@@ -90,7 +106,11 @@
       "frameworks": {
         "net10.0": {
           "targetAlias": "net10.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Khen\\source\\repos\\MiAmore\\DataSimulation1\\DataSimulation1.csproj": {
+              "projectPath": "C:\\Users\\Khen\\source\\repos\\MiAmore\\DataSimulation1\\DataSimulation1.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
