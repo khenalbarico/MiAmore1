@@ -3,8 +3,8 @@
     "Question": "Which of these is my favorite picture of you?",
     "Choice1": "",
     "Choice2": "",
-    "ImgChoice1": "questions/fav1.jpg",
-    "ImgChoice2": "questions/fav2.jpg",
+    "ImgChoice1": "images/questions/fav1.jpg",
+    "ImgChoice2": "images/questions/fav2.jpg",
     "Answer": "questions/fav2.jpg",
     "Comment": "Ang nakakabihag mong ngiti"
   },
@@ -20,8 +20,8 @@
     "Question": "What is my favorite fast food restaurant?",
     "Choice1": "KFC",
     "Choice2": "McDonalds",
-    "ImgChoice1": "Kfc.png",
-    "ImgChoice2": "Mcdo.jpg",
+    "ImgChoice1": "images/questions/Kfc.png",
+    "ImgChoice2": "images/questions/Mcdo.jpg",
     "Answer": "KFC",
     "Comment": "My all time favorite!"
   },

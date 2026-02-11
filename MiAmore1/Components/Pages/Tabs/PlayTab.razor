@@ -21,7 +21,10 @@
                     <div class="line line2">But first</div>
                     <div class="line line3">I have a few questions</div>
                 </div>
-                <button class="answer-btn" @onclick="StartQuiz">Answer</button>
+                @if (showStartButton)
+                {
+                    <button class="answer-btn show" @onclick="StartQuiz">Answer</button>
+                }
             }
             else if (currentQuestionIndex < questions.Count)
             {
@@ -30,11 +33,13 @@
                 <div class="choices">
                     @foreach (var choice in new[] { (q.Choice1, q.ImgChoice1), (q.Choice2, q.ImgChoice2) })
                     {
-                        <div class="choice @(selectedChoice == (string.IsNullOrEmpty(choice.Item2) ? choice.Item1 : choice.Item2) ? choiceResult : "")"
+                        var imgPath = !string.IsNullOrEmpty(choice.Item2) ? "/" + choice.Item2.TrimStart('/') : null;
+
+                        <div class="choice @(selectedChoice == (imgPath ?? choice.Item1) ? choiceResult : "")"
                              @onclick="() => SelectChoice(choice.Item1, choice.Item2)">
-                            @if (!string.IsNullOrEmpty(choice.Item2))
+                            @if (!string.IsNullOrEmpty(imgPath))
                             {
-                                <img src="@choice.Item2" />
+                                <img src="@imgPath" />
                             }
                             @if (!string.IsNullOrEmpty(choice.Item1))
                             {
@@ -71,10 +76,15 @@
     private string comment = "";
     private bool cooldownActive = false;
     private double cooldownWidth = 0;
+    private bool showStartButton = false;
 
-    protected override void OnInitialized()
+    protected override async void OnInitialized()
     {
         LoadQuestions();
+
+        await Task.Delay(3200);
+        showStartButton = true;
+        StateHasChanged();
     }
 
     void LoadQuestions()
@@ -96,17 +106,27 @@
     {
         if (cooldownActive || selectedChoice != "") return;
 
-        selectedChoice = string.IsNullOrEmpty(img) ? text : img;
+        selectedChoice = string.IsNullOrEmpty(img) ? text : "/" + img.TrimStart('/');
         var q = questions[currentQuestionIndex];
-        choiceResult = selectedChoice == q.Answer ? "correct" : "wrong";
-        if (choiceResult == "correct" && !string.IsNullOrEmpty(q.Comment)) comment = q.Comment;
+
+        var correctAnswer = (string.IsNullOrEmpty(q.ImgChoice1) && string.IsNullOrEmpty(q.ImgChoice2))
+            ? q.Answer
+            : "/" + q.Answer.TrimStart('/');
+
+        choiceResult = selectedChoice == correctAnswer ? "correct" : "wrong";
+
+        if (choiceResult == "correct")
+            comment = !string.IsNullOrEmpty(q.Comment) ? q.Comment : "Correct! 💖";
+        else
+            comment = "Wrong answer. I'm sad :(";
 
         cooldownActive = true;
-        for (int i = 0; i < 30; i++)
+
+        for (int i = 0; i < 25; i++)
         {
-            cooldownWidth = (i + 1) * (100.0 / 30);
+            cooldownWidth = (i + 1) * (100.0 / 25);
             StateHasChanged();
-            await Task.Delay(100);
+            await Task.Delay(80);
         }
 
         cooldownActive = false;
@@ -115,6 +135,5 @@
         comment = "";
         cooldownWidth = 0;
         currentQuestionIndex++;
-        StateHasChanged();
     }
 }

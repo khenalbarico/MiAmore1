@@ -281,5 +281,5 @@ C:\Users\Khen\source\repos\MiAmore\MiAmore1\bin\Debug\net10.0\wwwroot\images\que
 C:\Users\Khen\source\repos\MiAmore\MiAmore1\bin\Debug\net10.0\wwwroot\images\questions\Mcdo.jpg
 C:\Users\Khen\source\repos\MiAmore\MiAmore1\bin\Debug\net10.0\wwwroot\images\questions\fav1.jpg
 C:\Users\Khen\source\repos\MiAmore\MiAmore1\bin\Debug\net10.0\wwwroot\images\questions\fav2.jpg
-C:\Users\Khen\source\repos\MiAmore\MiAmore1\obj\Debug\net10.0\compressed\ma55tpk495-{0}-jtgf9cbkhl-jtgf9cbkhl.gz
-C:\Users\Khen\source\repos\MiAmore\MiAmore1\obj\Debug\net10.0\compressed\ts37cez53g-{0}-jtgf9cbkhl-jtgf9cbkhl.gz
+C:\Users\Khen\source\repos\MiAmore\MiAmore1\obj\Debug\net10.0\compressed\ma55tpk495-{0}-cb3edac75p-cb3edac75p.gz
+C:\Users\Khen\source\repos\MiAmore\MiAmore1\obj\Debug\net10.0\compressed\ts37cez53g-{0}-cb3edac75p-cb3edac75p.gz

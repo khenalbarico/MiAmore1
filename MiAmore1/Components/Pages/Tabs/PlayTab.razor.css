@@ -84,10 +84,9 @@
     width: min(720px, 92vw);
     padding: 32px 28px 40px 28px;
     border-radius: 22px;
-    background: linear-gradient(135deg, rgba(255, 182, 193, 0.35), rgba(255, 105, 180, 0.35));
-    border: 1px solid rgba(255, 105, 180, 0.6);
-    backdrop-filter: blur(14px);
-    box-shadow: 0 20px 50px rgba(255, 20, 147, 0.35);
+    background: #ffe4ec;
+    border: 2px solid #ff9ecb;
+    box-shadow: 0 20px 60px rgba(255, 20, 147, 0.35);
     transform: translateY(14px) scale(0.98);
     opacity: 0;
     animation: cardIn 520ms ease-out forwards;
@@ -142,31 +141,49 @@
 }
 
 .answer-btn {
+    opacity: 0;
+    transform: translateY(10px) scale(0.95);
+    transition: all 0.4s ease;
     margin-top: 30px;
-    padding: 12px 32px;
+    padding: 14px 40px;
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 800;
     border-radius: 999px;
     border: none;
     cursor: pointer;
     background: linear-gradient(135deg, #ff4da6, #ff1493);
     color: #ffffff;
-    box-shadow: 0 10px 25px rgba(255, 20, 147, 0.4);
-    opacity: 0;
-    transform: translateY(10px);
-    animation: lineIn 650ms ease-out forwards;
-    animation-delay: 3200ms;
-    transition: transform 200ms ease, box-shadow 200ms ease;
+    box-shadow: 0 0 15px rgba(255, 20, 147, 0.6);
+    animation: pulse 2s infinite;
+    transition: all 0.3s ease;
 }
+    .answer-btn.show {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 
     .answer-btn:hover {
-        transform: translateY(-2px) scale(1.05);
-        box-shadow: 0 14px 30px rgba(255, 20, 147, 0.55);
+        transform: scale(1.1);
+        box-shadow: 0 0 30px rgba(255, 20, 147, 0.9);
     }
 
-    .answer-btn:active {
-        transform: scale(0.98);
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 15px rgba(255, 20, 147, 0.6);
     }
+
+    50% {
+        box-shadow: 0 0 35px rgba(255, 20, 147, 1);
+    }
+
+    100% {
+        box-shadow: 0 0 15px rgba(255, 20, 147, 0.6);
+    }
+}
+
+.answer-btn:active {
+    transform: scale(0.98);
+}
 
 .quiz-question {
     font-size: clamp(20px, 2.5vw, 28px);
@@ -174,6 +191,19 @@
     color: #880e4f;
     margin-bottom: 20px;
     text-align: center;
+    animation: questionIn 0.5s ease;
+}
+
+@keyframes questionIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .choices {
@@ -187,13 +217,20 @@
     cursor: pointer;
     border: 2px solid rgba(255, 20, 147, 0.5);
     border-radius: 18px;
-    padding: 12px;
-    background: rgba(255, 182, 193, 0.2);
-    transition: transform 150ms ease, border-color 150ms ease, background 150ms ease;
+    padding: 14px;
+    background: rgba(255, 182, 193, 0.25);
+    transition: all 0.25s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
+    transform: scale(1);
 }
+
+    .choice:hover {
+        transform: scale(1.12);
+        box-shadow: 0 15px 35px rgba(255, 20, 147, 0.4);
+        border-color: #ff1493;
+    }
 
     .choice img {
         max-width: 120px;
@@ -204,20 +241,70 @@
 
     .choice.correct {
         border-color: #4caf50;
-        background-color: rgba(76, 175, 80, 0.25);
+        background: rgba(76, 175, 80, 0.25);
+        animation: correctPop 0.4s ease;
     }
 
-    .choice.wrong {
-        border-color: #f44336;
-        background-color: rgba(244, 67, 54, 0.25);
+@keyframes correctPop {
+    0% {
+        transform: scale(1);
     }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1.05);
+    }
+}
+
+.choice.wrong {
+    border-color: #f44336;
+    background: rgba(244, 67, 54, 0.25);
+    animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-6px);
+    }
+
+    50% {
+        transform: translateX(6px);
+    }
+
+    75% {
+        transform: translateX(-6px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
 
 .quiz-comment {
-    margin-top: 16px;
+    margin-top: 18px;
     font-size: clamp(16px, 2vw, 20px);
+    font-weight: 700;
     color: #ff1493;
-    font-weight: 600;
-    text-align: center;
+    animation: commentPop 0.4s ease;
+}
+
+@keyframes commentPop {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .cooldown-bar {
