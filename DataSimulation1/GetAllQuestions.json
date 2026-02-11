@@ -1,0 +1,37 @@
+[
+  {
+    "Question": "Which of these is my favorite picture of you?",
+    "Choice1": "",
+    "Choice2": "",
+    "ImgChoice1": "questions/fav1.jpg",
+    "ImgChoice2": "questions/fav2.jpg",
+    "Answer": "questions/fav2.jpg",
+    "Comment": "Ang nakakabihag mong ngiti"
+  },
+  {
+    "Question": "When and where is the exact place and time that you said YES and be my official girlfriend?",
+    "Choice1": "February 16, 2025 9:30pm @McDonalds",
+    "Choice2": "February 16, 2025 9:30pm @ChubbyAndChunks",
+    "ImgChoice1": "",
+    "ImgChoice2": "",
+    "Answer": "February 16, 2025 9:30pm @ChubbyAndChunks"
+  },
+  {
+    "Question": "What is my favorite fast food restaurant?",
+    "Choice1": "KFC",
+    "Choice2": "McDonalds",
+    "ImgChoice1": "Kfc.png",
+    "ImgChoice2": "Mcdo.jpg",
+    "Answer": "KFC",
+    "Comment": "My all time favorite!"
+  },
+  {
+    "Question": "Kaninong motor gamit ko nung panahong hinatiran kita ng McDonalds?",
+    "Choice1": "Jerrick",
+    "Choice2": "MC",
+    "ImgChoice1": "",
+    "ImgChoice2": "",
+    "Answer": "MC",
+    "Comment": "From nanghihiram ng motor, to may sarili nang motor! Praise the Lord"
+  }
+]

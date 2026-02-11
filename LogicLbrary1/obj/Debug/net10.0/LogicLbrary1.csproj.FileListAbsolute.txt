@@ -26,3 +26,5 @@ C:\Users\Khen\source\repos\MiAmore\LogicLbrary1\obj\Debug\net10.0\LogicLbrary1.d
 C:\Users\Khen\source\repos\MiAmore\LogicLbrary1\obj\Debug\net10.0\refint\LogicLbrary1.dll
 C:\Users\Khen\source\repos\MiAmore\LogicLbrary1\obj\Debug\net10.0\LogicLbrary1.pdb
 C:\Users\Khen\source\repos\MiAmore\LogicLbrary1\obj\Debug\net10.0\ref\LogicLbrary1.dll
+C:\Users\Khen\source\repos\MiAmore\LogicLbrary1\bin\Debug\net10.0\GetAllQuestions.json
+C:\Users\Khen\source\repos\MiAmore\LogicLbrary1\bin\Debug\net10.0\GetGalleryMessages.json

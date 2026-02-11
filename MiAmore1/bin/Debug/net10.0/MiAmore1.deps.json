@@ -14,7 +14,18 @@
           "MiAmore1.dll": {}
         }
       },
+      "DataSimulation1/1.0.0": {
+        "runtime": {
+          "DataSimulation1.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "LogicLbrary1/1.0.0": {
+        "dependencies": {
+          "DataSimulation1": "1.0.0"
+        },
         "runtime": {
           "LogicLbrary1.dll": {
             "assemblyVersion": "1.0.0.0",
@@ -26,6 +37,11 @@
   },
   "libraries": {
     "MiAmore1/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DataSimulation1/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
