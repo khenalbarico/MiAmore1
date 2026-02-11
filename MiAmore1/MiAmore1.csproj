@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DataSimulation1\DataSimulation1.csproj" />
     <ProjectReference Include="..\LogicLbrary1\LogicLbrary1.csproj" />
   </ItemGroup>
 

@@ -1,22 +1,120 @@
-﻿<div class="playtab">
+﻿@using System.IO
+@using System.Text.Json
+@using LogicLbrary1.Models.Play
+@inject IWebHostEnvironment Env
+
+<div class="playtab">
     <div class="bg">
         <div class="bg-layer bg1"></div>
         <div class="bg-layer bg2"></div>
         <div class="bg-layer bg3"></div>
         <div class="bg-layer bg4"></div>
     </div>
-
     <div class="overlay"></div>
 
     <section class="hero">
         <div class="hero-card">
-            <div class="lines">
-                <div class="line line1">I have a surprise for you!</div>
-                <div class="line line2">But first</div>
-                <div class="line line3">I have a few questions</div>
-            </div>
-
-            <button class="answer-btn">Answer</button>
+            @if (!quizStarted)
+            {
+                <div class="lines">
+                    <div class="line line1">I have a surprise for you!</div>
+                    <div class="line line2">But first</div>
+                    <div class="line line3">I have a few questions</div>
+                </div>
+                <button class="answer-btn" @onclick="StartQuiz">Answer</button>
+            }
+            else if (currentQuestionIndex < questions.Count)
+            {
+                var q = questions[currentQuestionIndex];
+                <div class="quiz-question">@q.Question</div>
+                <div class="choices">
+                    @foreach (var choice in new[] { (q.Choice1, q.ImgChoice1), (q.Choice2, q.ImgChoice2) })
+                    {
+                        <div class="choice @(selectedChoice == (string.IsNullOrEmpty(choice.Item2) ? choice.Item1 : choice.Item2) ? choiceResult : "")"
+                             @onclick="() => SelectChoice(choice.Item1, choice.Item2)">
+                            @if (!string.IsNullOrEmpty(choice.Item2))
+                            {
+                                <img src="@choice.Item2" />
+                            }
+                            @if (!string.IsNullOrEmpty(choice.Item1))
+                            {
+                                <span>@choice.Item1</span>
+                            }
+                        </div>
+                    }
+                </div>
+                @if (!string.IsNullOrEmpty(comment))
+                {
+                    <div class="quiz-comment">@comment</div>
+                }
+                @if (cooldownActive)
+                {
+                    <div class="cooldown-bar"><div class="cooldown-fill" style="width:@cooldownWidth%"></div></div>
+                }
+            }
+            else
+            {
+                <div class="lines">
+                    <div class="line line1">All done! Thanks for answering!</div>
+                </div>
+            }
         </div>
     </section>
 </div>
+
+@code {
+    private List<QuestionModel> questions = new();
+    private bool quizStarted = false;
+    private int currentQuestionIndex = 0;
+    private string selectedChoice = "";
+    private string choiceResult = "";
+    private string comment = "";
+    private bool cooldownActive = false;
+    private double cooldownWidth = 0;
+
+    protected override void OnInitialized()
+    {
+        LoadQuestions();
+    }
+
+    void LoadQuestions()
+    {
+        var path = Path.Combine(AppContext.BaseDirectory, "GetAllQuestions.json");
+        if (!File.Exists(path)) return;
+        var json = File.ReadAllText(path);
+        questions = JsonSerializer.Deserialize<List<QuestionModel>>(json) ?? new List<QuestionModel>();
+    }
+
+    void StartQuiz()
+    {
+        if (questions.Count == 0) return;
+        quizStarted = true;
+        currentQuestionIndex = 0;
+    }
+
+    async Task SelectChoice(string text, string img)
+    {
+        if (cooldownActive || selectedChoice != "") return;
+
+        selectedChoice = string.IsNullOrEmpty(img) ? text : img;
+        var q = questions[currentQuestionIndex];
+        choiceResult = selectedChoice == q.Answer ? "correct" : "wrong";
+        if (choiceResult == "correct" && !string.IsNullOrEmpty(q.Comment)) comment = q.Comment;
+
+        cooldownActive = true;
+        for (int i = 0; i < 30; i++)
+        {
+            cooldownWidth = (i + 1) * (100.0 / 30);
+            StateHasChanged();
+            await Task.Delay(100);
+        }
+
+        cooldownActive = false;
+        selectedChoice = "";
+        choiceResult = "";
+        comment = "";
+        cooldownWidth = 0;
+        currentQuestionIndex++;
+        StateHasChanged();
+    }
+}
