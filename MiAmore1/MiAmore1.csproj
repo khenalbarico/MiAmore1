@@ -12,10 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\GetAllMusics.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+  <Content Include="wwwroot\GetAllMusics.json">
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+  </Content>
+</ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\DataSimulation1\DataSimulation1.csproj" />
