@@ -7,5 +7,5 @@ public interface ISmtpContract
 {
     public string SenderEmail { get; set; }
     public string SenderPassword { get; set; }
-    public string RecepientEmail { get; set; }
+    public List<string> RecepientEmails { get; set; }
 }
