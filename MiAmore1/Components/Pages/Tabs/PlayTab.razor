@@ -1,7 +1,10 @@
 ﻿@using System.IO
 @using System.Text.Json
 @using LogicLbrary1.Models.Play
+@using LogicLbrary1.Models.Smtp
+@using LogicLbrary1.SmtpHandler1
 @inject IWebHostEnvironment Env
+@inject SmtpGmail1 GmailSender
 
 <div class="playtab">
     <div class="bg">
@@ -79,15 +82,46 @@
 
                             <div class="envelope">
                                 <div class="paper-out @(envelopeOpened ? "out" : "")">
-                                    <div class="paper-title">For you, my love</div>
-                                    <div class="paper-body">
-                                        I have something waiting for you…
-                                    </div>
+                                    @if (smtpSent)
+                                    {
+                                        <div class="paper-title">Sent with love 💖</div>
+                                        <div class="paper-body">
+                                            Please check your email, my love… I put my heart in there.
+                                        </div>
+                                    }
+                                    else if (smtpSending)
+                                    {
+                                        <div class="paper-title">Sending kisses…</div>
+                                        <div class="paper-body">
+                                            Hold on, love. I’m delivering something sweet to your inbox…
+                                        </div>
 
-                                    <button class="paper-btn" type="button">
-                                        Click Me
-                                    </button>
+                                        <div class="cooldown-bar paper-bar">
+                                            <div class="cooldown-fill" style="width:@smtpWidth%"></div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="paper-title">For you, my love</div>
+                                        <div class="paper-body">
+                                            I have something waiting for you…
+                                        </div>
+
+                                        <button class="paper-btn" type="button"
+                                                @onclick="SendValentineEmail"
+                                                @onclick:stopPropagation="true">
+                                            Click Me
+                                        </button>
+                                    }
+
+                                    @if (!string.IsNullOrWhiteSpace(smtpError))
+                                    {
+                                        <div class="paper-error">
+                                            Oh no… my love, something went wrong sending it. Try again?
+                                        </div>
+                                    }
                                 </div>
+
 
                                 <div class="flap"></div>
                                 <div class="heart-seal">💖</div>
@@ -140,6 +174,11 @@
     private bool envelopeVisible = false;
     private bool envelopeOpened = false;
     private bool showLetterContent = false;
+
+    private bool smtpSending = false;
+    private bool smtpSent = false;
+    private double smtpWidth = 0;
+    private string smtpError = "";
 
     protected override async void OnInitialized()
     {
@@ -255,4 +294,65 @@
         StateHasChanged();
         await Task.Delay(800);
     }
+
+    async Task SendValentineEmail()
+    {
+        if (smtpSending || smtpSent) return;
+
+        smtpError = "";
+        smtpSending = true;
+        smtpWidth = 0;
+        StateHasChanged();
+
+        var payload = new SmtpPayload
+        {
+            Subject = "My Valentine",
+        };
+
+        Task<bool> sendTask;
+        try
+        {
+            sendTask = GmailSender.SendAsync(payload);
+        }
+        catch (Exception ex)
+        {
+            smtpSending = false;
+            smtpError = ex.Message;
+            StateHasChanged();
+            return;
+        }
+
+        double w = 0;
+        while (!sendTask.IsCompleted)
+        {
+            w = Math.Min(90, w + 2.5);
+            smtpWidth = w;
+            StateHasChanged();
+            await Task.Delay(80);
+        }
+
+        try
+        {
+            var ok = await sendTask;
+            smtpWidth = 100;
+            StateHasChanged();
+            await Task.Delay(250);
+
+            smtpSending = false;
+            smtpSent = ok;
+            if (!ok) smtpError = "Send failed.";
+        }
+        catch (Exception ex)
+        {
+            smtpWidth = 100;
+            StateHasChanged();
+            await Task.Delay(250);
+
+            smtpSending = false;
+            smtpError = ex.Message;
+        }
+
+        StateHasChanged();
+    }
+}
 }

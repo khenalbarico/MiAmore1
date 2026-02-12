@@ -65,14 +65,13 @@ public static class MessageBody1
                         <p>
                             Hi my love, <strong>{herName}</strong> 💕
                             <br /><br />
-                            Every moment with you feels special, and I honestly can’t imagine
-                            celebrating love without you by my side. You make my days brighter,
-                            my smiles wider, and my heart fuller. 💖
+                            The moment I met you, my life turned into a spectrum of colors.
+                            Your smile makes my day and my heart complete. Please never stop wearing it kahit inaaway away mo ako minsan hehehe                        
                         </p>
 
                         <p>
-                            So I planned a little day for us — just you and me —
-                            filled with fun, laughter, and moments I’ll never forget. 🥰
+                            I know alam mo na ito pero I just want to tell you again na I planned a little day for us, just you and me
+                            filled with fun, laughter, and moments I’ll probably never forget.
                         </p>
 
                         <div class='divider'></div>
@@ -100,7 +99,7 @@ public static class MessageBody1
                         <p>
                             No matter where we go or what we do, my favorite part will always be
                             being with you. Holding your hand, hearing your laugh,
-                            and sharing moments that mean everything to me. 💑
+                            and sharing moments that mean everything to me.
                             <br /><br />
                             So here I am, asking you sincerely and from the bottom of my heart…
                         </p>

@@ -520,3 +520,13 @@
         transform: scale(1.1);
         box-shadow: 0 0 35px rgba(255, 20, 147, 1);
     }
+
+.paper-bar {
+    margin-top: 12px;
+}
+
+.paper-error {
+    margin-top: 12px;
+    font-weight: 800;
+    color: #880e4f;
+}
