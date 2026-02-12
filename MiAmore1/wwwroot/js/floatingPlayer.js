@@ -84,6 +84,35 @@
         audioEl.load();
     }
 
+    function setMuted(audioEl, muted) {
+        if (!audioEl) return;
+        audioEl.muted = !!muted;
+        audioEl.volume = muted ? 0 : 1;
+    }
+
+    function unmuteOnFirstGesture(audioEl, src) {
+        const once = async () => {
+            try {
+                if (audioEl && src) {
+                    if (audioEl.src !== src) {
+                        audioEl.src = src;
+                        audioEl.load();
+                    }
+                    audioEl.muted = false;
+                    audioEl.volume = 1;
+                    await audioEl.play();
+                }
+            } catch { }
+            window.removeEventListener("pointerdown", once, true);
+            window.removeEventListener("keydown", once, true);
+            window.removeEventListener("touchstart", once, true);
+        };
+
+        window.addEventListener("pointerdown", once, true);
+        window.addEventListener("keydown", once, true);
+        window.addEventListener("touchstart", once, true);
+    }
+
     function getProgress(audioEl) {
         if (!audioEl) return { currentTime: 0, duration: 0 };
         return {
@@ -99,5 +128,5 @@
         audioEl.currentTime = (slider0to1000 / 1000.0) * dur;
     }
 
-    return { init, play, pause, setSrc, getProgress, seekBySlider };
+    return { init, play, pause, setSrc, setMuted, unmuteOnFirstGesture, getProgress, seekBySlider };
 })();
