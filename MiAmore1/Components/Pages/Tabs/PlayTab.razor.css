@@ -242,7 +242,15 @@
     .choice.correct {
         border-color: #4caf50;
         background: rgba(76, 175, 80, 0.25);
+        box-shadow: 0 0 25px rgba(76, 175, 80, 0.7);
         animation: correctPop 0.4s ease;
+    }
+
+    .choice.wrong {
+        border-color: #f44336;
+        background: rgba(244, 67, 54, 0.25);
+        box-shadow: 0 0 25px rgba(244, 67, 54, 0.7);
+        animation: shake 0.4s ease;
     }
 
 @keyframes correctPop {
@@ -257,12 +265,6 @@
     100% {
         transform: scale(1.05);
     }
-}
-
-.choice.wrong {
-    border-color: #f44336;
-    background: rgba(244, 67, 54, 0.25);
-    animation: shake 0.4s ease;
 }
 
 @keyframes shake {
@@ -440,4 +442,75 @@
     .final-btn:hover {
         transform: scale(1.12);
         box-shadow: 0 0 40px rgba(255, 20, 147, 1);
+    }
+
+.correct-image {
+    width: 220px;
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.8s ease;
+}
+
+    .correct-image.show {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+.wrong-scene {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+    .wrong-scene.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+.wrong-image {
+    width: 220px;
+    margin-bottom: 20px;
+    animation: fadeInWrong 1s ease forwards;
+}
+
+@keyframes fadeInWrong {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.wrong-text {
+    font-size: 20px;
+    font-weight: 700;
+    color: #880e4f;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.retry-btn {
+    padding: 14px 40px;
+    font-size: 18px;
+    font-weight: 800;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, #ff4da6, #ff1493);
+    color: white;
+    box-shadow: 0 0 20px rgba(255, 20, 147, 0.7);
+    transition: all 0.4s ease;
+}
+
+    .retry-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 35px rgba(255, 20, 147, 1);
     }

@@ -14,6 +14,7 @@
 
     <section class="hero">
         <div class="hero-card">
+
             @if (!quizStarted)
             {
                 <div class="lines">
@@ -21,6 +22,7 @@
                     <div class="line line2">But first</div>
                     <div class="line line3">I have a few questions</div>
                 </div>
+
                 @if (showStartButton)
                 {
                     <button class="answer-btn show" @onclick="StartQuiz">Answer</button>
@@ -29,7 +31,9 @@
             else if (currentQuestionIndex < questions.Count)
             {
                 var q = questions[currentQuestionIndex];
+
                 <div class="quiz-question">@q.Question</div>
+
                 <div class="choices">
                     @foreach (var choice in new[] { (q.Choice1, q.ImgChoice1), (q.Choice2, q.ImgChoice2) })
                     {
@@ -48,18 +52,27 @@
                         </div>
                     }
                 </div>
-                @if (!string.IsNullOrEmpty(comment))
+
+                @if (!string.IsNullOrEmpty(currentComment))
                 {
-                    <div class="quiz-comment">@comment</div>
+                    <div class="quiz-comment">
+                        @currentComment
+                    </div>
                 }
+
                 @if (cooldownActive)
                 {
-                    <div class="cooldown-bar"><div class="cooldown-fill" style="width:@cooldownWidth%"></div></div>
+                    <div class="cooldown-bar">
+                        <div class="cooldown-fill" style="width:@cooldownWidth%"></div>
+                    </div>
                 }
             }
             else if (allCorrect)
             {
                 <div class="final-scene @(showFinalScene ? "show" : "")">
+
+                    <img src="/images/questions/correctAll.jpg" class="correct-image @(showCorrectImage ? "show" : "")" />
+
                     <div class="envelope-container @(showEnvelopeClose ? "close" : "")">
                         <div class="envelope">
                             <div class="letter"></div>
@@ -76,34 +89,49 @@
             }
             else
             {
-                <div class="lines">
-                    <div class="line line1">Almost perfect 💕</div>
+                <div class="wrong-scene @(showWrongScene ? "show" : "")">
+
+                    <img src="/images/questions/wrong.jpg" class="wrong-image" />
+
+                    <div class="wrong-text">
+                        Who answered one of the questions wrong? I'm starting to doubt that you are really my love!
+                    </div>
+
+                    <button class="retry-btn" @onclick="RetryQuiz">Retry</button>
+
                 </div>
             }
+
         </div>
     </section>
 </div>
 
 @code {
+
     private List<QuestionModel> questions = new();
     private bool quizStarted = false;
     private int currentQuestionIndex = 0;
     private string selectedChoice = "";
     private string choiceResult = "";
-    private string comment = "";
     private bool cooldownActive = false;
     private double cooldownWidth = 0;
     private bool showStartButton = false;
+    private string currentComment = "";
     private int correctCount = 0;
     private bool allCorrect = false;
+    private bool hasWrongAnswer = false;
+
+    private bool showFinalScene = false;
     private bool showEnvelopeClose = false;
     private bool showFinalButton = false;
-    private bool showFinalScene = false;
+    private bool showCorrectImage = false;
+
+    private bool showWrongScene = false;
 
     protected override async void OnInitialized()
     {
         LoadQuestions();
-        await Task.Delay(3200);
+        await Task.Delay(4000);
         showStartButton = true;
         StateHasChanged();
     }
@@ -113,15 +141,16 @@
         var path = Path.Combine(AppContext.BaseDirectory, "GetAllQuestions.json");
         if (!File.Exists(path)) return;
         var json = File.ReadAllText(path);
-        questions = JsonSerializer.Deserialize<List<QuestionModel>>(json) ?? new List<QuestionModel>();
+        questions = JsonSerializer.Deserialize<List<QuestionModel>>(json) ?? new();
     }
 
     void StartQuiz()
     {
-        if (questions.Count == 0) return;
         quizStarted = true;
         currentQuestionIndex = 0;
         correctCount = 0;
+        hasWrongAnswer = false;
+        allCorrect = false;
     }
 
     async Task SelectChoice(string text, string img)
@@ -129,54 +158,85 @@
         if (cooldownActive || selectedChoice != "") return;
 
         selectedChoice = string.IsNullOrEmpty(img) ? text : "/" + img.TrimStart('/');
+
         var q = questions[currentQuestionIndex];
 
         var correctAnswer = (string.IsNullOrEmpty(q.ImgChoice1) && string.IsNullOrEmpty(q.ImgChoice2))
             ? q.Answer
             : "/" + q.Answer.TrimStart('/');
 
-        choiceResult = selectedChoice == correctAnswer ? "correct" : "wrong";
-
-        if (choiceResult == "correct")
+        if (selectedChoice == correctAnswer)
         {
             correctCount++;
-            comment = !string.IsNullOrEmpty(q.Comment) ? q.Comment : "Correct!";
+            choiceResult = "correct";
+            currentComment = q.Comment;
         }
         else
         {
-            comment = "Wrong answer. I'm sad :(";
+            hasWrongAnswer = true;
+            choiceResult = "wrong";
+            currentComment = "Mali. I'm sad :(";
         }
 
         cooldownActive = true;
+        StateHasChanged();
 
         for (int i = 0; i < 25; i++)
         {
             cooldownWidth = (i + 1) * (100.0 / 25);
-            StateHasChanged();
             await Task.Delay(80);
+            StateHasChanged();
         }
 
         cooldownActive = false;
         selectedChoice = "";
         choiceResult = "";
-        comment = "";
         cooldownWidth = 0;
+        currentComment = "";
         currentQuestionIndex++;
 
-        if (currentQuestionIndex >= questions.Count && correctCount == questions.Count)
+        if (currentQuestionIndex >= questions.Count)
         {
-            allCorrect = true;
+            if (!hasWrongAnswer && correctCount == questions.Count)
+            {
+                allCorrect = true;
 
-            await Task.Delay(300);
-            showFinalScene = true;
-            StateHasChanged();
+                await Task.Delay(300);
+                showFinalScene = true;
+                StateHasChanged();
 
-            await Task.Delay(800);
-            showEnvelopeClose = true;
-            StateHasChanged();
+                await Task.Delay(500);
+                showCorrectImage = true;
+                StateHasChanged();
 
-            await Task.Delay(1500);
-            showFinalButton = true;
+                await Task.Delay(600);
+                showEnvelopeClose = true;
+                StateHasChanged();
+
+                await Task.Delay(1500);
+                showFinalButton = true;
+                StateHasChanged();
+            }
+            else
+            {
+                await Task.Delay(400);
+                showWrongScene = true;
+                StateHasChanged();
+            }
         }
+    }
+
+    void RetryQuiz()
+    {
+        quizStarted = false;
+        currentQuestionIndex = 0;
+        correctCount = 0;
+        hasWrongAnswer = false;
+        allCorrect = false;
+        showFinalScene = false;
+        showEnvelopeClose = false;
+        showFinalButton = false;
+        showCorrectImage = false;
+        showWrongScene = false;
     }
 }

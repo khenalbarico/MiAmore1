@@ -97,8 +97,10 @@ wwwroot\images\play\3.png
 wwwroot\images\play\4.png
 wwwroot\images\questions\Kfc.png
 wwwroot\images\questions\Mcdo.jpg
+wwwroot\images\questions\correctAll.jpg
 wwwroot\images\questions\fav1.jpg
 wwwroot\images\questions\fav2.jpg
+wwwroot\images\questions\wrong.jpg
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
