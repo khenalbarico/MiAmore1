@@ -294,6 +294,6 @@ C:\Users\Khen\source\repos\MiAmore\MiAmore1\bin\Debug\net10.0\wwwroot\js\floatin
 C:\Users\Khen\source\repos\MiAmore\MiAmore1\bin\Debug\net10.0\wwwroot\js\floatingPlayer.js
 C:\Users\Khen\source\repos\MiAmore\MiAmore1\obj\Debug\net10.0\scopedcss\Components\Pages\FloatingMusicPlayer.razor.rz.scp.css
 C:\Users\Khen\source\repos\MiAmore\MiAmore1\bin\Debug\net10.0\wwwroot\GetAllMusics.json
+C:\Users\Khen\source\repos\MiAmore\MiAmore1\obj\Debug\net10.0\compressed\v2pmo4sybn-{0}-2behro5vf3-2behro5vf3.gz
 C:\Users\Khen\source\repos\MiAmore\MiAmore1\obj\Debug\net10.0\compressed\ma55tpk495-{0}-istazxb77a-istazxb77a.gz
 C:\Users\Khen\source\repos\MiAmore\MiAmore1\obj\Debug\net10.0\compressed\ts37cez53g-{0}-istazxb77a-istazxb77a.gz
-C:\Users\Khen\source\repos\MiAmore\MiAmore1\obj\Debug\net10.0\compressed\v2pmo4sybn-{0}-2behro5vf3-2behro5vf3.gz

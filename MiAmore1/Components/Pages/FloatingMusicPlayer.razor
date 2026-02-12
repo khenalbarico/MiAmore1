@@ -38,28 +38,14 @@
                     @(_isPlaying ? "⏸ Pause" : "▶ Play")
                 </button>
                 <button class="fp-btn" @onclick="Next">⏭</button>
-
-                <button class="fp-btn fp-mini" @onclick="ToggleMinimize">
-                    @(_minimized ? "🔼" : "🔽")
-                </button>
             </div>
 
-            <div class="fp-progress" style="display:@(_minimized ? "none" : "block")">
+            <div class="fp-progress">
                 <input type="range" min="0" max="1000" value="@_slider"
-                       @oninput="OnSeekInput" />
+                       @onpointerdown="BeginSeek"
+                       @onpointerup="EndSeek"
+                       @onchange="OnSeekChange" />
                 <div class="fp-time">@_timeLabel</div>
-            </div>
-
-            <div style="display:@(_minimized ? "none" : "block")" class="fp-playlist">
-                @for (int i = 0; i < PlayerState.Playlist.Count; i++)
-                {
-                    var item = PlayerState.Playlist[i];
-                    <button class="fp-track @(i == PlayerState.Index ? "active" : "")"
-                            @onclick="(() => Pick(i))">
-                        <div class="fp-track-title">@item.MusicName</div>
-                        <div class="fp-track-artist">@item.Artist</div>
-                    </button>
-                }
             </div>
 
             <audio @ref="_audio"
@@ -82,7 +68,7 @@
     private ElementReference _audio;
 
     private bool _isPlaying;
-    private bool _minimized;
+    private bool _isSeeking;
 
     private int _slider = 0;
     private string _timeLabel = "0:00 / 0:00";
@@ -241,33 +227,19 @@
         else _isPlaying = false;
     }
 
-    private async Task Pick(int i)
-    {
-        if (!_jsReady || PlayerState.Current is null) return;
-
-        var wasPlaying = _isPlaying;
-        PlayerState.SetIndex(i);
-
-        await JS.InvokeVoidAsync("floatingPlayer.setSrc", _audio, GetAudioSrc());
-        if (wasPlaying)
-        {
-            var r = await JS.InvokeAsync<PlayResult>("floatingPlayer.play", _audio);
-            _isPlaying = r?.Ok == true;
-        }
-        else _isPlaying = false;
-    }
-
-    private void ToggleMinimize() => _minimized = !_minimized;
-
     private async Task OnEnded() => await Next();
 
-    private async Task OnSeekInput(ChangeEventArgs e)
+    private void BeginSeek() => _isSeeking = true;
+
+    private void EndSeek() => _isSeeking = false;
+
+    private async Task OnSeekChange(ChangeEventArgs e)
     {
         if (!_jsReady) return;
         if (e.Value is null) return;
         if (!int.TryParse(e.Value.ToString(), out var v)) return;
-        _slider = v;
 
+        _slider = v;
         await JS.InvokeVoidAsync("floatingPlayer.seekBySlider", _audio, _slider);
     }
 
@@ -281,7 +253,11 @@
                 {
                     var info = await JS.InvokeAsync<PlayerProgress>("floatingPlayer.getProgress", _audio);
 
-                    _slider = info.Duration <= 0 ? 0 : (int)Math.Round((info.CurrentTime / info.Duration) * 1000.0);
+                    if (!_isSeeking)
+                    {
+                        _slider = info.Duration <= 0 ? 0 : (int)Math.Round((info.CurrentTime / info.Duration) * 1000.0);
+                    }
+
                     _timeLabel = $"{FormatTime(info.CurrentTime)} / {FormatTime(info.Duration)}";
 
                     await InvokeAsync(StateHasChanged);
