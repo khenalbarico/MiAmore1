@@ -12,21 +12,16 @@
         case TabType.Gallery:
             <Gallery />
             break;
-
-        case TabType.Flower:
-            <Flower />
-            break;
-
-        case TabType.Music:
-            <Music />
-            break;
     }
 </div>
 
+<FloatingMusicPlayer IsPlayTab="@(TabState.ActiveTab == TabType.Play)"
+                     VisibleOnPlayTabOnly="true" />
+
 @code {
     protected override void OnInitialized()
-    => TabState.OnChange += StateHasChanged;
-     
+        => TabState.OnChange += StateHasChanged;
+
     public void Dispose()
-    => TabState.OnChange -= StateHasChanged;  
+        => TabState.OnChange -= StateHasChanged;
 }

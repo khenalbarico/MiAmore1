@@ -8,6 +8,14 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 builder.Services.RegisterSvc();
+builder.Services.AddScoped(sp =>
+{
+    var nav = sp.GetRequiredService<Microsoft.AspNetCore.Components.NavigationManager>();
+    return new HttpClient { BaseAddress = new Uri(nav.BaseUri) };
+});
+
+builder.Services.AddScoped<LogicLbrary1.MusicPlaylistHandler1.MusicLibraryService>();
+builder.Services.AddScoped<LogicLbrary1.MusicPlaylistHandler1.MusicPlayerState>();
 
 var app = builder.Build();
 

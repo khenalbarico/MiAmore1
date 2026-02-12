@@ -1,4 +1,5 @@
-﻿using LogicLbrary1.SmtpHandler1;
+﻿using LogicLbrary1.MusicPlaylistHandler1;
+using LogicLbrary1.SmtpHandler1;
 using LogicLbrary1.UserInterface1;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -10,5 +11,7 @@ public static class ServiceRegistry
     {
         svc.AddScoped<CoreTabState>();
         svc.AddScoped<SmtpGmail1>();
+        svc.AddScoped<MusicLibraryService>();
+        svc.AddScoped<MusicPlayerState>();
     }
 }

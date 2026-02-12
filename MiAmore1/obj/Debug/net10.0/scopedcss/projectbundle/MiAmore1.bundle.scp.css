@@ -267,6 +267,171 @@ main[b-tw8ez97nrt] {
         opacity: 0;
     }
 }
+/* /Components/Pages/FloatingMusicPlayer.razor.rz.scp.css */
+.floating-player[b-48yfu3u4ax] {
+    position: fixed;
+    left: 24px;
+    bottom: 24px;
+    width: 360px;
+    max-width: calc(100vw - 32px);
+    z-index: 9999;
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(255, 192, 203, 0.30), rgba(255, 105, 180, 0.18));
+    border: 1px solid rgba(255, 192, 203, 0.45);
+    backdrop-filter: blur(10px);
+    color: #3a0b21;
+    box-shadow: 0 16px 40px rgba(255, 105, 180, 0.22);
+    overflow: hidden;
+    user-select: none;
+}
+
+    .floating-player.dragging[b-48yfu3u4ax] {
+        opacity: 0.62;
+        transform: scale(0.995);
+    }
+
+.fp-header[b-48yfu3u4ax] {
+    padding: 12px 14px;
+    cursor: grab;
+    background: linear-gradient(135deg, rgba(255, 105, 180, 0.30), rgba(255, 192, 203, 0.25));
+    border-bottom: 1px solid rgba(255, 192, 203, 0.35);
+}
+
+.floating-player.dragging .fp-header[b-48yfu3u4ax] {
+    cursor: grabbing;
+}
+
+.fp-title[b-48yfu3u4ax] {
+    font-weight: 800;
+    letter-spacing: 0.2px;
+    color: #5a0f2f;
+}
+
+.fp-sub[b-48yfu3u4ax] {
+    opacity: 0.9;
+    font-size: 13px;
+    margin-top: 4px;
+    color: rgba(90, 15, 47, 0.85);
+}
+
+.fp-body[b-48yfu3u4ax] {
+    padding: 12px 14px;
+}
+
+.fp-comment[b-48yfu3u4ax] {
+    font-size: 13px;
+    opacity: 0.95;
+    margin-bottom: 10px;
+    color: rgba(90, 15, 47, 0.92);
+}
+
+.fp-controls[b-48yfu3u4ax] {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-top: 6px;
+}
+
+.fp-btn[b-48yfu3u4ax] {
+    border: 1px solid rgba(255, 105, 180, 0.22);
+    padding: 8px 10px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.55);
+    color: #5a0f2f;
+    cursor: pointer;
+    box-shadow: 0 8px 18px rgba(255, 105, 180, 0.12);
+    transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+}
+
+    .fp-btn:hover[b-48yfu3u4ax] {
+        background: rgba(255, 255, 255, 0.70);
+        box-shadow: 0 12px 24px rgba(255, 105, 180, 0.16);
+        transform: translateY(-1px);
+    }
+
+    .fp-btn:active[b-48yfu3u4ax] {
+        transform: translateY(0px);
+        box-shadow: 0 6px 14px rgba(255, 105, 180, 0.10);
+    }
+
+.fp-primary[b-48yfu3u4ax] {
+    width: 100%;
+    margin-bottom: 10px;
+    font-weight: 800;
+    border: 1px solid rgba(255, 105, 180, 0.35);
+    background: linear-gradient(135deg, rgba(255, 105, 180, 0.35), rgba(255, 192, 203, 0.55));
+}
+
+.fp-mini[b-48yfu3u4ax] {
+    margin-left: auto;
+}
+
+.fp-progress[b-48yfu3u4ax] {
+    margin-top: 10px;
+}
+
+    .fp-progress input[type="range"][b-48yfu3u4ax] {
+        width: 100%;
+        accent-color: hotpink;
+    }
+
+.fp-time[b-48yfu3u4ax] {
+    font-size: 12px;
+    opacity: 0.85;
+    margin-top: 6px;
+    color: rgba(90, 15, 47, 0.75);
+}
+
+.fp-playlist[b-48yfu3u4ax] {
+    margin-top: 12px;
+    display: grid;
+    gap: 8px;
+    max-height: 200px;
+    overflow: auto;
+    padding-right: 4px;
+}
+
+.fp-track[b-48yfu3u4ax] {
+    text-align: left;
+    border: 1px solid rgba(255, 105, 180, 0.18);
+    padding: 10px 10px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.48);
+    color: #5a0f2f;
+    cursor: pointer;
+    box-shadow: 0 8px 18px rgba(255, 105, 180, 0.10);
+    transition: transform 120ms ease, background 120ms ease;
+}
+
+    .fp-track:hover[b-48yfu3u4ax] {
+        background: rgba(255, 255, 255, 0.62);
+        transform: translateY(-1px);
+    }
+
+    .fp-track.active[b-48yfu3u4ax] {
+        background: linear-gradient(135deg, rgba(255, 105, 180, 0.25), rgba(255, 192, 203, 0.45));
+        border-color: rgba(255, 105, 180, 0.30);
+    }
+
+.fp-track-title[b-48yfu3u4ax] {
+    font-weight: 850;
+    font-size: 13px;
+}
+
+.fp-track-artist[b-48yfu3u4ax] {
+    opacity: 0.85;
+    font-size: 12px;
+}
+
+.fp-empty[b-48yfu3u4ax] {
+    opacity: 0.85;
+    color: rgba(90, 15, 47, 0.80);
+}
+
+.player-hidden[b-48yfu3u4ax] {
+    opacity: 0;
+    pointer-events: none;
+}
 /* /Components/Pages/Headers/Header.razor.rz.scp.css */
 .app-header[b-hg9mhh7ppk] {
     display: flex;

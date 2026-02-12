@@ -42,14 +42,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUYWJzXENvcmUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Khen/source/repos/MiAmore/MiAmore1/Components/Pages/Tabs/Flower.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUYWJzXEZsb3dlci5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Khen/source/repos/MiAmore/MiAmore1/Components/Pages/Tabs/Music.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUYWJzXE11c2ljLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Khen/source/repos/MiAmore/MiAmore1/Components/Routes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -65,6 +57,10 @@ build_metadata.AdditionalFiles.CssScope = b-tw8ez97nrt
 [C:/Users/Khen/source/repos/MiAmore/MiAmore1/Components/Layout/ReconnectModal.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcUmVjb25uZWN0TW9kYWwucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-r6ru5jmx3g
+
+[C:/Users/Khen/source/repos/MiAmore/MiAmore1/Components/Pages/FloatingMusicPlayer.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xGbG9hdGluZ011c2ljUGxheWVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-48yfu3u4ax
 
 [C:/Users/Khen/source/repos/MiAmore/MiAmore1/Components/Pages/Headers/Header.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIZWFkZXJzXEhlYWRlci5yYXpvcg==
