@@ -57,10 +57,27 @@
                     <div class="cooldown-bar"><div class="cooldown-fill" style="width:@cooldownWidth%"></div></div>
                 }
             }
+            else if (allCorrect)
+            {
+                <div class="final-scene @(showFinalScene ? "show" : "")">
+                    <div class="envelope-container @(showEnvelopeClose ? "close" : "")">
+                        <div class="envelope">
+                            <div class="letter"></div>
+                            <div class="flap"></div>
+                            <div class="heart-seal">💖</div>
+                        </div>
+                    </div>
+
+                    @if (showFinalButton)
+                    {
+                        <button class="final-btn show">Click Me</button>
+                    }
+                </div>
+            }
             else
             {
                 <div class="lines">
-                    <div class="line line1">All done! Thanks for answering!</div>
+                    <div class="line line1">Almost perfect 💕</div>
                 </div>
             }
         </div>
@@ -77,11 +94,15 @@
     private bool cooldownActive = false;
     private double cooldownWidth = 0;
     private bool showStartButton = false;
+    private int correctCount = 0;
+    private bool allCorrect = false;
+    private bool showEnvelopeClose = false;
+    private bool showFinalButton = false;
+    private bool showFinalScene = false;
 
     protected override async void OnInitialized()
     {
         LoadQuestions();
-
         await Task.Delay(3200);
         showStartButton = true;
         StateHasChanged();
@@ -100,6 +121,7 @@
         if (questions.Count == 0) return;
         quizStarted = true;
         currentQuestionIndex = 0;
+        correctCount = 0;
     }
 
     async Task SelectChoice(string text, string img)
@@ -116,9 +138,14 @@
         choiceResult = selectedChoice == correctAnswer ? "correct" : "wrong";
 
         if (choiceResult == "correct")
-            comment = !string.IsNullOrEmpty(q.Comment) ? q.Comment : "Correct! 💖";
+        {
+            correctCount++;
+            comment = !string.IsNullOrEmpty(q.Comment) ? q.Comment : "Correct!";
+        }
         else
+        {
             comment = "Wrong answer. I'm sad :(";
+        }
 
         cooldownActive = true;
 
@@ -135,5 +162,21 @@
         comment = "";
         cooldownWidth = 0;
         currentQuestionIndex++;
+
+        if (currentQuestionIndex >= questions.Count && correctCount == questions.Count)
+        {
+            allCorrect = true;
+
+            await Task.Delay(300);
+            showFinalScene = true;
+            StateHasChanged();
+
+            await Task.Delay(800);
+            showEnvelopeClose = true;
+            StateHasChanged();
+
+            await Task.Delay(1500);
+            showFinalButton = true;
+        }
     }
 }

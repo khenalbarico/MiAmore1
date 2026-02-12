@@ -5,7 +5,7 @@
     "Choice2": "",
     "ImgChoice1": "images/questions/fav1.jpg",
     "ImgChoice2": "images/questions/fav2.jpg",
-    "Answer": "questions/fav2.jpg",
+    "Answer": "images/questions/fav2.jpg",
     "Comment": "Ang nakakabihag mong ngiti"
   },
   {
@@ -14,7 +14,8 @@
     "Choice2": "February 16, 2025 9:30pm @ChubbyAndChunks",
     "ImgChoice1": "",
     "ImgChoice2": "",
-    "Answer": "February 16, 2025 9:30pm @ChubbyAndChunks"
+    "Answer": "February 16, 2025 9:30pm @ChubbyAndChunks",
+    "Comment": "Araw araw kang liligawan!"
   },
   {
     "Question": "What is my favorite fast food restaurant?",
@@ -22,7 +23,7 @@
     "Choice2": "McDonalds",
     "ImgChoice1": "images/questions/Kfc.png",
     "ImgChoice2": "images/questions/Mcdo.jpg",
-    "Answer": "KFC",
+    "Answer": "images/questions/Kfc.png",
     "Comment": "My all time favorite!"
   },
   {
