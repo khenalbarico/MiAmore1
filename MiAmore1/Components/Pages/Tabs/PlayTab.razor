@@ -13,7 +13,9 @@
     <div class="overlay"></div>
 
     <section class="hero">
-        <div class="hero-card">
+        <div class="hero-card
+    @(allCorrect ? (envelopeVisible ? "card-envelope-visible" : "") : "")
+    @(allCorrect ? (envelopeOpened ? "card-envelope-open" : "card-envelope-closed") : "")">
 
             @if (!quizStarted)
             {
@@ -70,20 +72,27 @@
             else if (allCorrect)
             {
                 <div class="final-scene @(showFinalScene ? "show" : "")">
-
-                    <img src="/images/questions/correctAll.jpg" class="correct-image @(showCorrectImage ? "show" : "")" />
-
-                    <div class="envelope-container @(showEnvelopeClose ? "close" : "")">
-                        <div class="envelope">
-                            <div class="letter"></div>
-                            <div class="flap"></div>
-                            <div class="heart-seal">💖</div>
-                        </div>
-                    </div>
-
-                    @if (showFinalButton)
+                    @if (envelopeVisible)
                     {
-                        <button class="final-btn show">Click Me</button>
+                        <div class="envelope-container @(envelopeOpened ? "open" : "")"
+                             @onclick="OpenEnvelope">
+
+                            <div class="envelope">
+                                <div class="paper-out @(envelopeOpened ? "out" : "")">
+                                    <div class="paper-title">For you, my love</div>
+                                    <div class="paper-body">
+                                        I have something waiting for you…
+                                    </div>
+
+                                    <button class="paper-btn" type="button">
+                                        Click Me
+                                    </button>
+                                </div>
+
+                                <div class="flap"></div>
+                                <div class="heart-seal">💖</div>
+                            </div>
+                        </div>
                     }
                 </div>
             }
@@ -127,6 +136,10 @@
     private bool showCorrectImage = false;
 
     private bool showWrongScene = false;
+
+    private bool envelopeVisible = false;
+    private bool envelopeOpened = false;
+    private bool showLetterContent = false;
 
     protected override async void OnInitialized()
     {
@@ -201,20 +214,12 @@
             {
                 allCorrect = true;
 
-                await Task.Delay(300);
+                await Task.Delay(400);
                 showFinalScene = true;
                 StateHasChanged();
 
-                await Task.Delay(500);
-                showCorrectImage = true;
-                StateHasChanged();
-
                 await Task.Delay(600);
-                showEnvelopeClose = true;
-                StateHasChanged();
-
-                await Task.Delay(1500);
-                showFinalButton = true;
+                envelopeVisible = true;
                 StateHasChanged();
             }
             else
@@ -238,5 +243,16 @@
         showFinalButton = false;
         showCorrectImage = false;
         showWrongScene = false;
+        envelopeVisible = false;
+        envelopeOpened = false;
+        showLetterContent = false;
+    }
+
+    async Task OpenEnvelope()
+    {
+        if (envelopeOpened) return;
+        envelopeOpened = true;
+        StateHasChanged();
+        await Task.Delay(800);
     }
 }

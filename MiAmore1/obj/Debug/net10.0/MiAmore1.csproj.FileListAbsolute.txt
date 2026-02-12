@@ -283,5 +283,5 @@ C:\Users\Khen\source\repos\MiAmore\MiAmore1\bin\Debug\net10.0\wwwroot\images\que
 C:\Users\Khen\source\repos\MiAmore\MiAmore1\bin\Debug\net10.0\wwwroot\images\questions\fav2.jpg
 C:\Users\Khen\source\repos\MiAmore\MiAmore1\bin\Debug\net10.0\wwwroot\images\questions\correctAll.jpg
 C:\Users\Khen\source\repos\MiAmore\MiAmore1\bin\Debug\net10.0\wwwroot\images\questions\wrong.jpg
-C:\Users\Khen\source\repos\MiAmore\MiAmore1\obj\Debug\net10.0\compressed\ma55tpk495-{0}-o7glsinxv9-o7glsinxv9.gz
-C:\Users\Khen\source\repos\MiAmore\MiAmore1\obj\Debug\net10.0\compressed\ts37cez53g-{0}-o7glsinxv9-o7glsinxv9.gz
+C:\Users\Khen\source\repos\MiAmore\MiAmore1\obj\Debug\net10.0\compressed\ma55tpk495-{0}-4boueubdb8-4boueubdb8.gz
+C:\Users\Khen\source\repos\MiAmore\MiAmore1\obj\Debug\net10.0\compressed\ts37cez53g-{0}-4boueubdb8-4boueubdb8.gz
