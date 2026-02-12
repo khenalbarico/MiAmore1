@@ -11,73 +11,73 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MiAmore1
 build_property.RootNamespace = MiAmore1
-build_property.ProjectDir = C:\Users\Khen\source\repos\MiAmore\MiAmore1\
+build_property.ProjectDir = C:\Users\Albarico\source\repos\MiAmore1\MiAmore1\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Khen\source\repos\MiAmore\MiAmore1
+build_property.MSBuildProjectDirectory = C:\Users\Albarico\source\repos\MiAmore1\MiAmore1
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 10.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/Khen/source/repos/MiAmore/MiAmore1/Components/App.razor]
+[C:/Users/Albarico/source/repos/MiAmore1/MiAmore1/Components/App.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Khen/source/repos/MiAmore/MiAmore1/Components/Pages/Error.razor]
+[C:/Users/Albarico/source/repos/MiAmore1/MiAmore1/Components/Pages/Error.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Khen/source/repos/MiAmore/MiAmore1/Components/Pages/Index.razor]
+[C:/Users/Albarico/source/repos/MiAmore1/MiAmore1/Components/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xJbmRleC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Khen/source/repos/MiAmore/MiAmore1/Components/Pages/NotFound.razor]
+[C:/Users/Albarico/source/repos/MiAmore1/MiAmore1/Components/Pages/NotFound.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xOb3RGb3VuZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Khen/source/repos/MiAmore/MiAmore1/Components/Pages/Tabs/Core.razor]
+[C:/Users/Albarico/source/repos/MiAmore1/MiAmore1/Components/Pages/Tabs/Core.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUYWJzXENvcmUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Khen/source/repos/MiAmore/MiAmore1/Components/Routes.razor]
+[C:/Users/Albarico/source/repos/MiAmore1/MiAmore1/Components/Routes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Khen/source/repos/MiAmore/MiAmore1/Components/_Imports.razor]
+[C:/Users/Albarico/source/repos/MiAmore1/MiAmore1/Components/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Khen/source/repos/MiAmore/MiAmore1/Components/Layout/MainLayout.razor]
+[C:/Users/Albarico/source/repos/MiAmore1/MiAmore1/Components/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-tw8ez97nrt
 
-[C:/Users/Khen/source/repos/MiAmore/MiAmore1/Components/Layout/ReconnectModal.razor]
+[C:/Users/Albarico/source/repos/MiAmore1/MiAmore1/Components/Layout/ReconnectModal.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcUmVjb25uZWN0TW9kYWwucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-r6ru5jmx3g
 
-[C:/Users/Khen/source/repos/MiAmore/MiAmore1/Components/Pages/FloatingMusicPlayer.razor]
+[C:/Users/Albarico/source/repos/MiAmore1/MiAmore1/Components/Pages/FloatingMusicPlayer.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xGbG9hdGluZ011c2ljUGxheWVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-48yfu3u4ax
 
-[C:/Users/Khen/source/repos/MiAmore/MiAmore1/Components/Pages/Headers/Header.razor]
+[C:/Users/Albarico/source/repos/MiAmore1/MiAmore1/Components/Pages/Headers/Header.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIZWFkZXJzXEhlYWRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-hg9mhh7ppk
 
-[C:/Users/Khen/source/repos/MiAmore/MiAmore1/Components/Pages/Headers/Menu.razor]
+[C:/Users/Albarico/source/repos/MiAmore1/MiAmore1/Components/Pages/Headers/Menu.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIZWFkZXJzXE1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-9oqh1w5oaq
 
-[C:/Users/Khen/source/repos/MiAmore/MiAmore1/Components/Pages/Headers/Title.razor]
+[C:/Users/Albarico/source/repos/MiAmore1/MiAmore1/Components/Pages/Headers/Title.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIZWFkZXJzXFRpdGxlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-lk2he0a9v9
 
-[C:/Users/Khen/source/repos/MiAmore/MiAmore1/Components/Pages/Tabs/Gallery.razor]
+[C:/Users/Albarico/source/repos/MiAmore1/MiAmore1/Components/Pages/Tabs/Gallery.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUYWJzXEdhbGxlcnkucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-vm5hlx0bf2
 
-[C:/Users/Khen/source/repos/MiAmore/MiAmore1/Components/Pages/Tabs/PlayTab.razor]
+[C:/Users/Albarico/source/repos/MiAmore1/MiAmore1/Components/Pages/Tabs/PlayTab.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUYWJzXFBsYXlUYWIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-fnc0jl6hql

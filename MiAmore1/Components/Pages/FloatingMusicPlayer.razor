@@ -7,7 +7,7 @@
      @ref="_root">
 
     <div class="fp-header">
-        <div class="fp-title">Music Player ni Khen</div>
+        <div class="fp-title">Love Music Player</div>
         <div class="fp-sub">
             @if (PlayerState.Current is not null)
             {
@@ -25,23 +25,26 @@
         {
             <div class="fp-comment">“@PlayerState.Current.Comment”</div>
 
-            @if (_autoplayBlocked && !_isPlaying)
-            {
-                <button class="fp-btn fp-primary" @onclick="EnableMusic">
-                    💗 Tap to enable music
-                </button>
-            }
-
             <div class="fp-controls">
-                <button class="fp-btn" @onclick="Prev">⏮</button>
-                <button class="fp-btn" @onclick="TogglePlay">
-                    @(_isPlaying ? "⏸ Pause" : "▶ Play")
+                <button class="fp-icon-btn" @onclick="Prev" type="button" aria-label="Previous">⏮</button>
+
+                <button class="fp-play-btn" @onclick="TogglePlay" type="button" aria-label="Play/Pause">
+                    <span class="fp-play-icon">@(_isPlaying ? "⏸" : "▶")</span>
+                    <span class="fp-play-text">@(_isPlaying ? "Pause" : "Play")</span>
                 </button>
-                <button class="fp-btn" @onclick="Next">⏭</button>
+
+                <button class="fp-icon-btn" @onclick="Next" type="button" aria-label="Next">⏭</button>
+
+                <div class="fp-volume" aria-label="Volume">
+                    <span class="fp-vol-ico">🔊</span>
+                    <input class="fp-vol-range" type="range" min="0" max="100" value="@_volume"
+                           @onchange="OnVolumeChange" />
+                    <span class="fp-vol-val">@_volume%</span>
+                </div>
             </div>
 
             <div class="fp-progress">
-                <input type="range" min="0" max="1000" value="@_slider"
+                <input class="fp-seek" type="range" min="0" max="1000" value="@_slider"
                        @onpointerdown="BeginSeek"
                        @onpointerup="EndSeek"
                        @onchange="OnSeekChange" />
@@ -72,12 +75,11 @@
 
     private int _slider = 0;
     private string _timeLabel = "0:00 / 0:00";
+    private int _volume = 85;
 
     private CancellationTokenSource? _pollCts;
 
     private bool _jsReady;
-    private bool _autoplayBlocked;
-
     private bool _startMuted = true;
     private bool _unmuteHooked;
     private bool _triedAutoPlay;
@@ -86,11 +88,8 @@
     {
         PlayerState.OnChange += StateHasChanged;
 
-        if (!PlayerState.IsReady)
-        {
-            var list = await Library.GetAllAsync();
-            PlayerState.SetPlaylist(list);
-        }
+        var list = await Library.GetAllAsync(forceReload: true);
+        PlayerState.SetPlaylist(Shuffle(list));
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -114,6 +113,11 @@
             _ = Task.Run(() => PollProgressLoop(_pollCts.Token));
         }
 
+        if (_jsReady && PlayerState.Current is not null)
+        {
+            await JS.InvokeVoidAsync("floatingPlayer.setVolume", _audio, _volume / 100.0);
+        }
+
         if (AutoPlay && !_triedAutoPlay && PlayerState.Current is not null && _jsReady)
         {
             _triedAutoPlay = true;
@@ -121,6 +125,18 @@
             await TryAutoPlayMuted();
             await EnsureUnmuteOnFirstInteraction();
         }
+    }
+
+    private static IReadOnlyList<T> Shuffle<T>(IReadOnlyList<T> source)
+    {
+        var list = source.ToList();
+        var rng = Random.Shared;
+        for (var i = list.Count - 1; i > 0; i--)
+        {
+            var j = rng.Next(i + 1);
+            (list[i], list[j]) = (list[j], list[i]);
+        }
+        return list;
     }
 
     private string GetAudioSrc()
@@ -136,20 +152,11 @@
         {
             await JS.InvokeVoidAsync("floatingPlayer.setMuted", _audio, true);
             var result = await JS.InvokeAsync<PlayResult>("floatingPlayer.play", _audio);
-            if (result?.Ok == true)
-            {
-                _isPlaying = true;
-                _autoplayBlocked = false;
-            }
-            else
-            {
-                _isPlaying = false;
-                _autoplayBlocked = true;
-            }
+            _isPlaying = result?.Ok == true;
         }
         catch
         {
-            _autoplayBlocked = true;
+            _isPlaying = false;
         }
 
         await InvokeAsync(StateHasChanged);
@@ -168,15 +175,6 @@
         catch { }
     }
 
-    private async Task EnableMusic()
-    {
-        _autoplayBlocked = false;
-        await JS.InvokeVoidAsync("floatingPlayer.setMuted", _audio, false);
-        var r = await JS.InvokeAsync<PlayResult>("floatingPlayer.play", _audio);
-        _isPlaying = r?.Ok == true;
-        await InvokeAsync(StateHasChanged);
-    }
-
     private async Task TogglePlay()
     {
         if (!_jsReady || PlayerState.Current is null) return;
@@ -185,14 +183,15 @@
         {
             await JS.InvokeVoidAsync("floatingPlayer.pause", _audio);
             _isPlaying = false;
+            await InvokeAsync(StateHasChanged);
+            return;
         }
-        else
-        {
-            await JS.InvokeVoidAsync("floatingPlayer.setMuted", _audio, false);
-            var result = await JS.InvokeAsync<PlayResult>("floatingPlayer.play", _audio);
-            _isPlaying = result?.Ok == true;
-            _autoplayBlocked = !_isPlaying;
-        }
+
+        await JS.InvokeVoidAsync("floatingPlayer.setMuted", _audio, false);
+        var result = await JS.InvokeAsync<PlayResult>("floatingPlayer.play", _audio);
+        _isPlaying = result?.Ok == true;
+
+        await InvokeAsync(StateHasChanged);
     }
 
     private async Task Next()
@@ -203,12 +202,20 @@
         PlayerState.Next();
 
         await JS.InvokeVoidAsync("floatingPlayer.setSrc", _audio, GetAudioSrc());
+        await JS.InvokeVoidAsync("floatingPlayer.setVolume", _audio, _volume / 100.0);
+
         if (wasPlaying)
         {
+            await JS.InvokeVoidAsync("floatingPlayer.setMuted", _audio, false);
             var r = await JS.InvokeAsync<PlayResult>("floatingPlayer.play", _audio);
             _isPlaying = r?.Ok == true;
         }
-        else _isPlaying = false;
+        else
+        {
+            _isPlaying = false;
+        }
+
+        await InvokeAsync(StateHasChanged);
     }
 
     private async Task Prev()
@@ -219,12 +226,20 @@
         PlayerState.Prev();
 
         await JS.InvokeVoidAsync("floatingPlayer.setSrc", _audio, GetAudioSrc());
+        await JS.InvokeVoidAsync("floatingPlayer.setVolume", _audio, _volume / 100.0);
+
         if (wasPlaying)
         {
+            await JS.InvokeVoidAsync("floatingPlayer.setMuted", _audio, false);
             var r = await JS.InvokeAsync<PlayResult>("floatingPlayer.play", _audio);
             _isPlaying = r?.Ok == true;
         }
-        else _isPlaying = false;
+        else
+        {
+            _isPlaying = false;
+        }
+
+        await InvokeAsync(StateHasChanged);
     }
 
     private async Task OnEnded() => await Next();
@@ -241,6 +256,20 @@
 
         _slider = v;
         await JS.InvokeVoidAsync("floatingPlayer.seekBySlider", _audio, _slider);
+    }
+
+    private async Task OnVolumeChange(ChangeEventArgs e)
+    {
+        if (!_jsReady) return;
+        if (e.Value is null) return;
+        if (!int.TryParse(e.Value.ToString(), out var v)) return;
+
+        if (v < 0) v = 0;
+        if (v > 100) v = 100;
+
+        _volume = v;
+        await JS.InvokeVoidAsync("floatingPlayer.setVolume", _audio, _volume / 100.0);
+        await InvokeAsync(StateHasChanged);
     }
 
     private async Task PollProgressLoop(CancellationToken ct)

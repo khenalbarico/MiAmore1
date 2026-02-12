@@ -34,5 +34,59 @@
     "Artist": "Silent sanctuary",
     "Directory": "musics/6.mp3",
     "Comment": "Sa'yo lang."
+  },
+  {
+    "MusicName": "Take my breath away",
+    "Artist": "Berlin",
+    "Directory": "musics/Berlin - Take my breath away LYRICS.mp3",
+    "Comment": "Your beauty takes my breath away."
+  },
+  {
+    "MusicName": "If",
+    "Artist": "Bread",
+    "Directory": "musics/Bread - If (lyrics).mp3",
+    "Comment": "Your favorite!"
+  },
+  {
+    "MusicName": "Forever",
+    "Artist": "The little dippers",
+    "Directory": "musics/Forever.mp3",
+    "Comment": "Forever is not enough with you."
+  },
+  {
+    "MusicName": "Just the two of us",
+    "Artist": "Grover Washington Jr.",
+    "Directory": "musics/Grover Washington Jr. - Just the Two of Us (feat. Bill Withers) (Official Lyric Video).mp3",
+    "Comment": "The moment that I've been waiting for. Just the two of us."
+  },
+  {
+    "MusicName": "Put your head on my shoulder",
+    "Artist": "Paul Anka.",
+    "Directory": "musics/Put Your Head On My Shoulder.mp3",
+    "Comment": "I like it when you put your head on my shoulder."
+  },
+  {
+    "MusicName": "Every breath you take",
+    "Artist": "The Police",
+    "Directory": "musics/The Police - Every Breath You Take (Visualiser).mp3",
+    "Comment": "Every breath you take <3 is  a breath from mine"
+  },
+  {
+    "MusicName": "Unchained Melody",
+    "Artist": "The Righteous brothers",
+    "Directory": "musics/Unchained Melody (Remastered).mp3",
+    "Comment": "I don't know this song actually HAHAHA"
+  },
+  {
+    "MusicName": "We belong together",
+    "Artist": "Ritchie Valens",
+    "Directory": "musics/We Belong Together.mp3",
+    "Comment": "The song said it. We actually belong together"
   }
+
+
+
+
+
+
 ]

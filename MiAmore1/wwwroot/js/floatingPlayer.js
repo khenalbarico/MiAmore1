@@ -1,132 +1,242 @@
-﻿window.floatingPlayer = (() => {
-    function init(rootEl) {
-        if (!rootEl) return;
+﻿window.floatingPlayer = (function () {
+    function getRoot(el) {
+        return el && el.closest ? el.closest(".floating-player") : null;
+    }
 
-        const saved = localStorage.getItem("floatingPlayer.pos");
-        if (saved) {
-            try {
-                const p = JSON.parse(saved);
-                if (typeof p.left === "number") rootEl.style.left = p.left + "px";
-                if (typeof p.top === "number") rootEl.style.top = p.top + "px";
-            } catch { }
+    function clamp01(n) {
+        n = Number(n);
+        if (!isFinite(n)) return 1;
+        if (n < 0) return 0;
+        if (n > 1) return 1;
+        return n;
+    }
+
+    function clampInt(n, min, max) {
+        n = parseInt(n, 10);
+        if (!isFinite(n)) return min;
+        if (n < min) return min;
+        if (n > max) return max;
+        return n;
+    }
+
+    function fmtReason(e) {
+        if (!e) return "play-failed";
+        if (typeof e === "string") return e;
+        if (e.name) return e.name;
+        if (e.message) return e.message;
+        return "play-failed";
+    }
+
+    function supportsPassive() {
+        let ok = false;
+        try {
+            const opts = Object.defineProperty({}, "passive", {
+                get() {
+                    ok = true;
+                    return true;
+                }
+            });
+            window.addEventListener("test-passive", null, opts);
+            window.removeEventListener("test-passive", null, opts);
+        } catch { }
+        return ok;
+    }
+
+    function dragInit(root) {
+        if (!root || root.__fpDragInit) return;
+        root.__fpDragInit = true;
+
+        const header = root.querySelector(".fp-header");
+        if (!header) return;
+
+        let startX = 0;
+        let startY = 0;
+        let baseLeft = 0;
+        let baseTop = 0;
+        let dragging = false;
+        let pointerId = null;
+
+        function getBase() {
+            const rect = root.getBoundingClientRect();
+            const cs = getComputedStyle(root);
+            const left = parseFloat(cs.left);
+            const top = parseFloat(cs.top);
+
+            const hasTop = cs.top !== "auto" && !isNaN(top);
+            const hasLeft = cs.left !== "auto" && !isNaN(left);
+
+            const currentLeft = hasLeft ? left : rect.left;
+            const currentTop = hasTop ? top : rect.top;
+
+            return { left: currentLeft, top: currentTop, rect };
         }
 
-        let dragging = false;
-        let startX = 0, startY = 0;
-        let startLeft = 0, startTop = 0;
+        function constrain(left, top) {
+            const rect = root.getBoundingClientRect();
+            const w = rect.width;
+            const h = rect.height;
 
-        const handle = rootEl.querySelector(".fp-header") || rootEl;
+            const maxLeft = Math.max(0, window.innerWidth - w - 8);
+            const maxTop = Math.max(0, window.innerHeight - h - 8);
 
-        const onPointerDown = (e) => {
-            dragging = true;
-            rootEl.setPointerCapture?.(e.pointerId);
+            if (left < 8) left = 8;
+            if (top < 8) top = 8;
+            if (left > maxLeft) left = maxLeft;
+            if (top > maxTop) top = maxTop;
 
-            const rect = rootEl.getBoundingClientRect();
+            return { left, top };
+        }
+
+        function onDown(e) {
+            if (e.button !== undefined && e.button !== 0) return;
+
+            const base = getBase();
+            baseLeft = base.left;
+            baseTop = base.top;
+
             startX = e.clientX;
             startY = e.clientY;
-            startLeft = rect.left;
-            startTop = rect.top;
 
-            rootEl.classList.add("dragging");
+            dragging = true;
+            pointerId = e.pointerId;
+
+            root.classList.add("dragging");
+            root.style.left = baseLeft + "px";
+            root.style.top = baseTop + "px";
+            root.style.bottom = "auto";
+            root.style.right = "auto";
+
+            try { header.setPointerCapture(pointerId); } catch { }
+
             e.preventDefault();
-        };
+        }
 
-        const onPointerMove = (e) => {
+        function onMove(e) {
             if (!dragging) return;
+            if (pointerId !== null && e.pointerId !== pointerId) return;
 
             const dx = e.clientX - startX;
             const dy = e.clientY - startY;
 
-            let left = startLeft + dx;
-            let top = startTop + dy;
+            let left = baseLeft + dx;
+            let top = baseTop + dy;
 
-            const maxLeft = window.innerWidth - 40;
-            const maxTop = window.innerHeight - 40;
-            left = Math.max(-20, Math.min(left, maxLeft));
-            top = Math.max(-20, Math.min(top, maxTop));
+            const c = constrain(left, top);
+            root.style.left = c.left + "px";
+            root.style.top = c.top + "px";
+        }
 
-            rootEl.style.left = left + "px";
-            rootEl.style.top = top + "px";
-
-            localStorage.setItem("floatingPlayer.pos", JSON.stringify({ left, top }));
-        };
-
-        const onPointerUp = (e) => {
+        function endDrag(e) {
             if (!dragging) return;
-            dragging = false;
-            rootEl.classList.remove("dragging");
-            e.preventDefault();
-        };
+            if (pointerId !== null && e.pointerId !== pointerId) return;
 
-        handle.style.touchAction = "none";
-        handle.addEventListener("pointerdown", onPointerDown);
-        window.addEventListener("pointermove", onPointerMove);
-        window.addEventListener("pointerup", onPointerUp);
+            dragging = false;
+            root.classList.remove("dragging");
+
+            try { header.releasePointerCapture(pointerId); } catch { }
+            pointerId = null;
+        }
+
+        const opt = supportsPassive() ? { passive: false } : false;
+
+        header.addEventListener("pointerdown", onDown, opt);
+        window.addEventListener("pointermove", onMove, opt);
+        window.addEventListener("pointerup", endDrag, opt);
+        window.addEventListener("pointercancel", endDrag, opt);
     }
 
-    async function play(audioEl) {
-        if (!audioEl) return { ok: false, reason: "no-audio" };
+    async function play(audio) {
+        if (!audio) return { ok: false, reason: "no-audio" };
         try {
-            await audioEl.play();
-            return { ok: true };
+            const p = audio.play();
+            if (p && typeof p.then === "function") await p;
+            return { ok: true, reason: null };
         } catch (e) {
-            return { ok: false, reason: e?.name ?? "play-failed" };
+            return { ok: false, reason: fmtReason(e) };
         }
     }
 
-    function pause(audioEl) {
-        if (audioEl) audioEl.pause();
+    function pause(audio) {
+        if (!audio) return;
+        audio.pause();
     }
 
-    function setSrc(audioEl, src) {
-        if (!audioEl) return;
-        audioEl.src = src;
-        audioEl.load();
+    function setMuted(audio, muted) {
+        if (!audio) return;
+        audio.muted = !!muted;
     }
 
-    function setMuted(audioEl, muted) {
-        if (!audioEl) return;
-        audioEl.muted = !!muted;
-        audioEl.volume = muted ? 0 : 1;
+    function setVolume(audio, volume01) {
+        if (!audio) return;
+        audio.volume = clamp01(volume01);
     }
 
-    function unmuteOnFirstGesture(audioEl, src) {
-        const once = async () => {
-            try {
-                if (audioEl && src) {
-                    if (audioEl.src !== src) {
-                        audioEl.src = src;
-                        audioEl.load();
-                    }
-                    audioEl.muted = false;
-                    audioEl.volume = 1;
-                    await audioEl.play();
-                }
-            } catch { }
-            window.removeEventListener("pointerdown", once, true);
-            window.removeEventListener("keydown", once, true);
-            window.removeEventListener("touchstart", once, true);
-        };
-
-        window.addEventListener("pointerdown", once, true);
-        window.addEventListener("keydown", once, true);
-        window.addEventListener("touchstart", once, true);
+    function setSrc(audio, src) {
+        if (!audio) return;
+        const next = src || "";
+        const cur = audio.getAttribute("src") || "";
+        if (cur !== next) audio.setAttribute("src", next);
+        try { audio.load(); } catch { }
     }
 
-    function getProgress(audioEl) {
-        if (!audioEl) return { currentTime: 0, duration: 0 };
+    function seekBySlider(audio, slider) {
+        if (!audio) return;
+        const d = audio.duration;
+        if (!d || !isFinite(d) || d <= 0) return;
+        const v = clampInt(slider, 0, 1000);
+        audio.currentTime = (v / 1000) * d;
+    }
+
+    function getProgress(audio) {
+        if (!audio) return { currentTime: 0, duration: 0 };
+        const d = audio.duration;
         return {
-            currentTime: audioEl.currentTime || 0,
-            duration: audioEl.duration || 0
+            currentTime: audio.currentTime || 0,
+            duration: d && isFinite(d) ? d : 0
         };
     }
 
-    function seekBySlider(audioEl, slider0to1000) {
-        if (!audioEl) return;
-        const dur = audioEl.duration || 0;
-        if (dur <= 0) return;
-        audioEl.currentTime = (slider0to1000 / 1000.0) * dur;
+    function unmuteOnFirstGesture(audio, src) {
+        if (!audio) return;
+        if (audio.__fpUnmuteHooked) return;
+        audio.__fpUnmuteHooked = true;
+
+        const handler = async () => {
+            try {
+                if (src) {
+                    const cur = audio.getAttribute("src") || "";
+                    if (cur !== src) {
+                        audio.setAttribute("src", src);
+                        try { audio.load(); } catch { }
+                    }
+                }
+                audio.muted = false;
+                await play(audio);
+            } catch { }
+            window.removeEventListener("pointerdown", handler, true);
+            window.removeEventListener("keydown", handler, true);
+            window.removeEventListener("touchstart", handler, true);
+        };
+
+        window.addEventListener("pointerdown", handler, true);
+        window.addEventListener("keydown", handler, true);
+        window.addEventListener("touchstart", handler, true);
     }
 
-    return { init, play, pause, setSrc, setMuted, unmuteOnFirstGesture, getProgress, seekBySlider };
+    function init(root) {
+        if (!root) return;
+        dragInit(root);
+    }
+
+    return {
+        init,
+        setSrc,
+        play,
+        pause,
+        setMuted,
+        setVolume,
+        seekBySlider,
+        getProgress,
+        unmuteOnFirstGesture
+    };
 })();
